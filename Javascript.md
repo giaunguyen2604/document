@@ -1,4 +1,19 @@
-### 1. Javascript closure là gì?
+Table of contents:
+1. [Js Closure](#closure)
+2. [Currying In JavaScript](#currying)
+3. [Merge Array](#merge-array)
+4. [Proxy](#proxy)
+5. [Defer & Aync](#deferasync)
+6. [Try catch](#trycatch)
+7. [Relative import](#import)
+8. [Custom field with Formik](#formik)
+9. [Swap 2 value](#swap)
+10. [New feature in ES11/ES2020](#es11)
+11. [Lazy loading](#lazy)
+12. [Redux Thunk](#thunk)
+13. [14 Useful Packages](#usefulpackages)
+
+### 1. Javascript closure là gì? <a name='closure'></a>
 
 > Closure một chức năng có quyền truy cập vào phạm vi cha, ngay cả sau khi phạm vi đã đóng.
 
@@ -56,7 +71,7 @@ result(); // Chay lan 2 --> 2
 result(); // Chay lan 3 ---> 3
 ```
 
-#### 2. Javascript: Currying In JavaScript
+### 2. Javascript: Currying In JavaScript <a name='currying'></a>
 
 > Currying is a technique of evaluating function with multiple arguments, into sequence of functions with single argument. In other words, when a function, instead of taking all arguments at one time, takes the first one and return a new function that takes the second one and returns a new function which takes the third one, and so forth, until all arguments have been fulfilled.
 
@@ -105,7 +120,7 @@ console.log(movies.map(getId)); //should return [ 1, 2, 3 ]
 console.log(series.map(getId)); //should return [ 4, 5, 6 ]
 ```
 
-### 3. Merge array
+### 3. Merge array <a name='currying'></a>
 
 - Concat es5:
 
@@ -203,14 +218,14 @@ rank: "150000"
 }
 ```
 
-### 4. Forward Proxy & Reverse Proxy
+### 4. Forward Proxy & Reverse Proxy <a name='proxy'></a>
 
 - Forward Proxy: thay mặt cho client
 - Reverse Proxy: thay mặt cho server
 
 ![proxy_server](./images/proxy.png)
 
-### 5. Defer và async hiệu quả khi load javascript
+### 5. Defer và async hiệu quả khi load javascript <a name='deferasync'></a>
 
 - Cả async và defer đều là các thuộc tính boolean. Cách sử dụng của chúng là tương tự nhau:
 
@@ -221,7 +236,7 @@ rank: "150000"
 
 Các attribute này chỉ có ý nghĩa khi sử dụng tập lệnh trong `<head>` của trang và chúng sẽ vô dụng nếu bạn đặt tập lệnh vào phần `</body>`
 
---> Điều tốt nhất cần làm để tăng tốc độ tải trang của bạn khi sử dụng tập lệnh là đặt chúng vào thẻ <head> và thêm thuộc tính defer vào thẻ script của bạn:
+&#8594; Điều tốt nhất cần làm để tăng tốc độ tải trang của bạn khi sử dụng tập lệnh là đặt chúng vào thẻ <head> và thêm thuộc tính defer vào thẻ script của bạn:
 
 ```js
 <script defer src="script.js"></script>
@@ -230,12 +245,12 @@ Các attribute này chỉ có ý nghĩa khi sử dụng tập lệnh trong `<hea
 using `defer`:
 ![defer_tag](https://flaviocopes.com/javascript-async-defer/with-defer.png)
 
-### 6. Try catch
+### 6. Try catch <a name='trycatch'></a>
 
 - try catch chỉ hoạt động (bắt lỗi) khi 1 function được gọi thực thi trong try
 - Không hoạt động với hàm setTimeout (vì khi đó try catch đã chạy xong thì setTimeout mới chạy)
 
-### 7. Xử lý relative imports với jsconfig
+### 7. Xử lý relative imports với jsconfig <a name='import'></a>
 
 - create file jsconfig.json in `root path` of project
 - should know how to use include, exclude...
@@ -254,23 +269,23 @@ using `defer`:
 }
 ```
 
-### 8. Create custom field using `formik`
+### 8. Create custom field using `formik` <a name='formik'></a>
 
 - Source: <a href='https://github.com/paulnguyen-mn/redux-photo-app/pull/3/files'>Link code demo</a>
 
-#### 9. Swap 2 value
+### 9. Swap 2 value <a name='swap'></a>
 
 let a = 3
 let b = 4
 [a,b] = [b,a]
 
-#### 10. New feature in ES11/ES2020
+### 10. New feature in ES11/ES2020 <a name='es11'></a>
 
 ##### 10.1. Optional Chaining
 
 As a JavaScript developer, you must have come across this error a thousand times.
 TypeError: Cannot read property ‘z’ of undefined
---> It happens because you tried to access a property on something that is not an object.
+&#8594; It happens because you tried to access a property on something that is not an object.
 
 ```js
 const smartphones = {
@@ -283,7 +298,7 @@ console.log(smartphones.brands.apple); // output is: ‘true’
 console.log(smartphones.companies.motorola); // output is: TypeError: Cannot read property 'motorola' of undefined
 ```
 
---> `New feature`: using a question mark immediately followed by a dot (“?.”). It commands the JavaScript engine to not throw an error but return “undefined” as output.
+&#8594; `New feature`: using a question mark immediately followed by a dot (“?.”). It commands the JavaScript engine to not throw an error but return “undefined” as output.
 
 Example:
 **Accessing an Object**
@@ -341,14 +356,14 @@ console.log(number) // output is 5
 ```
 
 Since 0 is not a positive/natural number, it is a falsy value. As a result, the ‘number’ variable will now get the right-hand value assigned to it, which is 5. Anyway, that is not what we want.
---> you can use the nullish coalescing operator that can be written using two question marks – ‘??’.
+&#8594; you can use the nullish coalescing operator that can be written using two question marks – ‘??’.
 ```js
 let theNumber = 0
 let number = theNumber ?? 5
 console.log(number) // output is: 0
 ```
 
---> The right-hand side value will only be assigned if the left-hand side value is equal to undefined or null. 
+&#8594; The right-hand side value will only be assigned if the left-hand side value is equal to undefined or null. 
 
 #### 10.3 Private Fields
 Since ES6, JavaScript started supporting class syntax, but private fields are now supported. To define a private property in JavaScript, it should have the hashtag symbol ('#') in the prefix.
@@ -419,7 +434,7 @@ try {
 
 #### 10.6 Promise.allSettled
 When you want multiple Promises to complete, you can use Promise.all ([promise_1, promise_2]). 
---> In this process, if one of the promises fails, the JavaScript engine will throw an error. 
+&#8594; In this process, if one of the promises fails, the JavaScript engine will throw an error. 
 
 *There are cases in which the failure of one promise doesn’t matter, and the rest would resolve. 
 To achieve that, the new JavaScript ES11 unpacks `Promise.allSettled`.
@@ -483,7 +498,7 @@ index: 49
 input: “S series, iPhone, note series, iPhone, A series, iPhone, Moto phones”
 ```
 
-### 10.9. globalThis
+#### 10.9. globalThis
 You can execute JavaScript codes in different environments, such as browsers or Node.js. In browsers, a global object is available under the window variable; whereas, in Node.js, it is an object called global. With globalThis, it is now easy to use a global object regardless of the environment in which the code is running.
 ```js
 // In a browser
@@ -527,4 +542,468 @@ Also, it is important to not mix BigInt with other types:
 const maxNum = 9007199254740991n;
 console.log(maxNum +10); // output is: Cannot mix BigInt and other types, use explicit conversions
 ```
+
+### 11. Lazy Loading <a name='lazy'></a>
+&#8594; Tăng performance cho người dùng
+Demo
+```js
+import * as React from 'react'
+
+const Globe = React.lazy(() => import('../globe'))// gia sử chúng ta có component Globe
+
+function App() {
+  const [showGlobe, setShowGlobe] = React.useState(false)
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        height: '100%',
+        padding: '2rem',
+      }}
+    >
+      <label style={{marginBottom: '1rem'}}>
+        <input
+          type="checkbox"
+          checked={showGlobe}
+          onChange={e => setShowGlobe(e.target.checked)}
+        />
+        {' show globe'}
+      </label>
+      <div style={{width: 400, height: 400}}>
+        <React.Suspense fallback={<div>loading globe...</div>}>
+          {showGlobe ? <Globe /> : null}
+        </React.Suspense>
+      </div>
+    </div>
+  )
+}
+
+export default App
+```
+
+### 12. Redux Thunk <a name='thunk'></a>
+Redux Thunk middleware allows you to write action creators that return a function instead of an action.
+Be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.
+
+**What’s a thunk?!**
+A thunk is a function that wraps an expression to delay its evaluation.
+```js
+// calculation of 1 + 2 is immediate
+// x === 3
+let x = 1 + 2;
+ 
+// calculation of 1 + 2 is delayed
+// foo can be called later to perform the calculation
+// foo is a thunk!
+let foo = () => 1 + 2;
+```
+
+**Implement**
+
+At `Index.js`
+```js
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
+// use applyMiddleware to add the thunk middleware to the store
+const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+
+`more later`
+
+### 13. 14 Useful Packages Every React Developer Should Know <a name='usefulpackages'></a>
+**14.1. React Testing Library**
+`yarn add --dev @testing-library/react`
+
+And here’s how you can test the HiddenMessage React component with react-testing-library.
+```js
+// __tests__/hidden-message.js
+// these imports are something you'd normally configure Jest to import for you
+// automatically. Learn more in the setup docs: https://testing-library.com/docs/react-testing-library/setup#cleanup
+import '@testing-library/jest-dom'
+// NOTE: jest-dom adds handy assertions to Jest and is recommended, but not required
+
+import React from 'react'
+import {render, fireEvent, screen} from '@testing-library/react'
+import HiddenMessage from '../hidden-message'
+
+test('shows the children when the checkbox is checked', () => {
+  const testMessage = 'Test Message'
+  render(<HiddenMessage>{testMessage}</HiddenMessage>)
+
+  // query* functions will return the element or null if it cannot be found
+  // get* functions will return the element or throw an error if it cannot be found
+  expect(screen.queryByText(testMessage)).toBeNull()
+
+  // the queries can accept a regex to make your selectors more resilient to content tweaks and changes.
+  fireEvent.click(screen.getByLabelText(/show/i))
+
+  // .toBeInTheDocument() is an assertion that comes from jest-dom
+  // otherwise you could use .toBeDefined()
+  expect(screen.getByText(testMessage)).toBeInTheDocument()
+})
+```
+
+Document: [Link](https://testing-library.com/docs/react-testing-library/intro/)
+
+**14.2. Framer Motion**
+The motions and animations are powered by the Framer library.
+Framer Motion includes the following:
+- Spring animations
+- Simple keyframes syntax
+- Gestures (drag/tap/hover)
+- Layout and shared layout animations
+- SVG paths
+- Exit animations
+- Server-side rendering
+- Variants for orchestrating animations across components
+- CSS variables
+
+```js 
+yarn add framer-motion
+```
+
+And here’s how you use Framer Motion inside your React components.
+```js
+import { motion } from "framer-motion"
+export const MyComponent = ({ isVisible }) => (
+    <motion.div animate={{ opacity: isVisible ? 1 : 0 }} />
+)
+```
+
+**14.3 styled-components**
+Quick example
+```js
+import React from 'react';
+
+import styled from 'styled-components';
+
+// Create a <Title> react component that renders an <h1> which is
+// centered, palevioletred and sized at 1.5em
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+// Create a <Wrapper> react component that renders a <section> with
+// some padding and a papayawhip background
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+// Use them like any other React component – except they're styled!
+<Wrapper>
+  <Title>Hello World, this is my first styled component!</Title>
+</Wrapper>
+```
+
+**14.4. Cypress**
+Cypress is a **fast**, **easy**, and **reliable testing** library for anything that runs in a *browser*. 
+
+Cypress makes it possible to:
+- Set up tests
+- Write tests
+- Run tests
+- Debug tests
+
+Be compared to **Selenium**. However, Cypress is both fundamentally and architecturally different.
+
+```js
+yarn add cypress --dev
+```
+Example:
+
+**Steps**:
+1. Create a sample_spec.js file
+2. Watch Cypress update our list of specs
+3. Launch the Cypress Test Runner
+
+**Step 1:**
+Let’s create a new file in the cypress/integration folder that was created for us:
+`touch {your_project}/cypress/integration/sample_spec.js`
+&#8594; Cypress Test Runner immediately display it in the list of integration tests.
+
+**Step 2:**
+- Write your first passing test
+- Write your first failing test
+- Watch Cypress reload in real time
+
+Add the code below to your sample_spec.js test file.
+```js
+describe('My First Test', () => {
+  it('Does not do much!', () => {
+    expect(true).to.equal(true)
+  })
+})
+```
+
+Once you save this file, you should see the browser reload.
+Over in the Command Log, you’ll see Cypress display the suite, the test, and your first assertion (which should be passing in green).
+
+![example_img](https://miro.medium.com/max/894/0*ukLR71sNF-YC9OP5.png)
+
+
+**14.5. Prettier**
+Prettier is an opinionated code formatter.
+Prettier enforces a consistent style by parsing your code and reprinting it with its own rules.
+
+Currently, Prettier supports the following file extensions:
+- JavaScript (including experimental features)
+- JSX
+- Angular
+- Vue
+- Flow
+- TypeScript
+- CSS, Less, and SCSS
+- HTML
+- JSON
+- GraphQL
+- Markdown, including GFM and MDX
+- YAML
+
+Useful tip:
+```js
+Fn + Left Arrow (Mac)= Home (Window)
+Multi cursor at the end of every line: Shift + Option (Alt) + I 
+Jump to the start of every line: press Home after doing before step
+```
+
+Install:
+`yarn add --dev --exact prettier`
+
+Create an empty config file
+`.prettierrc.json`
+
+Create a .prettierignore file to let the Prettier CLI and editors know which files to not format. Here’s an example:
+```js
+# Ignore artifacts:
+build
+coverage
+```
+If your project isn’t ready to format, say, HTML files yet, add ***.html**.
+- Format all files with Prettier: `yarn prettier --write .`
+- `prettier --write app/` to format a certain directory
+- `prettier --write app/components/Button.js` to format a certain file.
+
+**14.6 ESLint**
+- ESLint is a tool for identifying and reporting bugs found in code.
+- ESLint package analyzes your code and lets you know if there are any errors or warnings present.
+
+**Install**:
+`yarn add eslint --dev`
+
+Set up a configuration file:
+`./node_modules/.bin/eslint --init`
+
+You can run ESLint on any file or directory like this:
+`./node_modules/.bin/eslint yourfile.js`
+
+**Configuration:**
+
+After running eslint --init, you'll have a .eslintrc file in your directory. In it, you'll see some rules configured like this:
+```js
+{
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"]
+    }
+}
+```
+
+The names "semi" and "quotes" are the names of rules in ESLint. 
+The first value is the error level of the rule and can be one of these values:
+- "off" or 0 — turn the rule off
+- "warn" or 1 — turn the rule on as a warning (doesn't affect exit code)
+- "error" or 2 — turn the rule on as an error (exit code will be 1)
+
+More about configuring: [Link](https://eslint.org/docs/user-guide/configuring/)
+
+**14.7. Redux**
+> Redux is a predictable state container for JavaScript apps
+
+```js
+yarn add @reduxjs/toolkit react-redux
+```
+
+**14.8. Redux Thunk**
+> Redux Thunk middleware extends the store’s abilities and lets you write async logic that interacts with the store.
+
+Install:
+```yarn add redux-thunk```
+To enable Redux Thunk, use applyMiddleware() from the Redux library.
+
+```js
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers/index';
+// Note: this API requires redux@>=3.1.0
+const store = createStore(rootReducer, applyMiddleware(thunk));
+```
+
+Redux Thunk middleware allows you to write action creators that return ***a function*** instead of **an action**. 
+
+An action creator that returns a function to perform asynchronous dispatch:
+```js
+const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
+function increment() {
+  return {
+    type: INCREMENT_COUNTER,
+  };
+}
+function incrementAsync() {
+  return (dispatch) => {
+    setTimeout(() => {
+      // Yay! Can invoke sync or async actions with `dispatch`
+      dispatch(increment());
+    }, 1000);
+  };
+}
+```
+
+**14.9. Formik**
+- Formik is keeping track of (theo dõi) values/errors/visited fields, orchestrating validation, and handling submission
+
+Install: ```yarn add formik```
+**Getting started**
+Formik keeps track of your form’s state and then exposes it plus a few reusable methods and event handlers (*handleChange*, *handleBlur*, and *handleSubmit*) to your form via **props**.
+
+*handleChange* and *handleBlur* work exactly as expected — they use a name or id attribute to figure out which field to update.
+
+```js
+import React from 'react';
+ import { Formik } from 'formik';
+ 
+ const Basic = () => (
+   <div>
+     <h1>Anywhere in your app!</h1>
+     <Formik
+       initialValues={{ email: '', password: '' }}
+       validate={values => {
+         const errors = {};
+         if (!values.email) {
+           errors.email = 'Required';
+         } else if (
+           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+         ) {
+           errors.email = 'Invalid email address';
+         }
+         return errors;
+       }}
+       onSubmit={(values, { setSubmitting }) => {
+         setTimeout(() => {
+           alert(JSON.stringify(values, null, 2));
+           setSubmitting(false);
+         }, 400);
+       }}
+     >
+       {({
+         values,
+         errors,
+         touched,
+         handleChange,
+         handleBlur,
+         handleSubmit,
+         isSubmitting,
+         /* and other goodies */
+       }) => (
+         <form onSubmit={handleSubmit}>
+           <input
+             type="email"
+             name="email"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.email}
+           />
+           {errors.email && touched.email && errors.email}
+           <input
+             type="password"
+             name="password"
+             onChange={handleChange}
+             onBlur={handleBlur}
+             value={values.password}
+           />
+           {errors.password && touched.password && errors.password}
+           <button type="submit" disabled={isSubmitting}>
+             Submit
+           </button>
+         </form>
+       )}
+     </Formik>
+   </div>
+ );
+ 
+ export default Basic;
+```
+[Link document](https://formik.org/docs/overview)
+
+**14.10. Recharts**
+Recharts is a chart library built with React and D3. 
+Help you to write charts in React applications without any pain.
+
+Install: `yarn add recharts`
+Example:
+```js
+import React from 'react';
+import {
+  LineChart, Line, XAxis, CartesianGrid, Tooltip,
+} from 'recharts';
+
+const Recharts = () => (
+  <LineChart
+    width={400}
+    height={400}
+    data={data}
+    margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
+  >
+    <XAxis dataKey="name" />
+    <Tooltip />
+    <CartesianGrid stroke="#f5f5f5" />
+    <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} />
+    <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />
+  </LineChart>
+)
+
+export default Recharts;
+```
+[Link document](https://recharts.org/en-US/api)
+
+**14.11. Docz**
+Docz makes it easy to write and publish beautiful interactive documentation for your code.
+...
+**14.12. react-i18next**
+
+**14.13. typescript**
+TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.
+
+
+**14.14. TSConfig**
+
+The TSConfig is a json5 file that configures both your compiler flags and declares where to find files.
+```js
+{
+  // Change this to match your project
+  include: ["src/**/*"],
+  compilerOptions: {
+    // Tells TypeScript to read JS files, as
+    // normally they are ignored as source files
+    allowJs: true,
+    // Generate d.ts files
+    declaration: true,
+    // This compiler run should
+    // only output d.ts files
+    emitDeclarationOnly: true,
+    // Types should go into this directory.
+    // Removing this would place the .d.ts files
+    // next to the .js files
+    outDir: "dist",
+  },
+}
+```
+
 
