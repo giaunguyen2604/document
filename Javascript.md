@@ -616,7 +616,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk));
 `more later`
 
 ### 13. 14 Useful Packages Every React Developer Should Know <a name='usefulpackages'></a>
-**14.1. React Testing Library**
+**13.1. React Testing Library**
 `yarn add --dev @testing-library/react`
 
 And here’s how you can test the HiddenMessage React component with react-testing-library.
@@ -650,7 +650,7 @@ test('shows the children when the checkbox is checked', () => {
 
 Document: [Link](https://testing-library.com/docs/react-testing-library/intro/)
 
-**14.2. Framer Motion**
+**13.2. Framer Motion**
 The motions and animations are powered by the Framer library.
 Framer Motion includes the following:
 - Spring animations
@@ -675,7 +675,7 @@ export const MyComponent = ({ isVisible }) => (
 )
 ```
 
-**14.3 styled-components**
+**13.3 styled-components**
 Quick example
 ```js
 import React from 'react';
@@ -703,7 +703,7 @@ const Wrapper = styled.section`
 </Wrapper>
 ```
 
-**14.4. Cypress**
+**13.4. Cypress**
 Cypress is a **fast**, **easy**, and **reliable testing** library for anything that runs in a *browser*. 
 
 Cypress makes it possible to:
@@ -749,7 +749,7 @@ Over in the Command Log, you’ll see Cypress display the suite, the test, and y
 ![example_img](https://miro.medium.com/max/894/0*ukLR71sNF-YC9OP5.png)
 
 
-**14.5. Prettier**
+**13.5. Prettier**
 Prettier is an opinionated code formatter.
 Prettier enforces a consistent style by parsing your code and reprinting it with its own rules.
 
@@ -791,7 +791,7 @@ If your project isn’t ready to format, say, HTML files yet, add ***.html**.
 - `prettier --write app/` to format a certain directory
 - `prettier --write app/components/Button.js` to format a certain file.
 
-**14.6 ESLint**
+**13.6 ESLint**
 - ESLint is a tool for identifying and reporting bugs found in code.
 - ESLint package analyzes your code and lets you know if there are any errors or warnings present.
 
@@ -824,14 +824,14 @@ The first value is the error level of the rule and can be one of these values:
 
 More about configuring: [Link](https://eslint.org/docs/user-guide/configuring/)
 
-**14.7. Redux**
+**13.7. Redux**
 > Redux is a predictable state container for JavaScript apps
 
 ```js
 yarn add @reduxjs/toolkit react-redux
 ```
 
-**14.8. Redux Thunk**
+**13.8. Redux Thunk**
 > Redux Thunk middleware extends the store’s abilities and lets you write async logic that interacts with the store.
 
 Install:
@@ -866,7 +866,7 @@ function incrementAsync() {
 }
 ```
 
-**14.9. Formik**
+**13.9. Formik**
 - Formik is keeping track of (theo dõi) values/errors/visited fields, orchestrating validation, and handling submission
 
 Install: ```yarn add formik```
@@ -942,7 +942,7 @@ import React from 'react';
 ```
 [Link document](https://formik.org/docs/overview)
 
-**14.10. Recharts**
+**13.10. Recharts**
 Recharts is a chart library built with React and D3. 
 Help you to write charts in React applications without any pain.
 
@@ -973,16 +973,16 @@ export default Recharts;
 ```
 [Link document](https://recharts.org/en-US/api)
 
-**14.11. Docz**
+**13.11. Docz**
 Docz makes it easy to write and publish beautiful interactive documentation for your code.
 ...
-**14.12. react-i18next**
+**13.12. react-i18next**
 
-**14.13. typescript**
+**13.13. typescript**
 TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS.
 
 
-**14.14. TSConfig**
+**13.14. TSConfig**
 
 The TSConfig is a json5 file that configures both your compiler flags and declares where to find files.
 ```js
