@@ -875,7 +875,7 @@ Formik keeps track of your form’s state and then exposes it plus a few reusabl
 
 *handleChange* and *handleBlur* work exactly as expected — they use a name or id attribute to figure out which field to update.
 
-```js
+ ```js
 import React from 'react';
  import { Formik } from 'formik';
  
@@ -948,7 +948,7 @@ Help you to write charts in React applications without any pain.
 
 Install: `yarn add recharts`
 Example:
-```js
+ ```js
 import React from 'react';
 import {
   LineChart, Line, XAxis, CartesianGrid, Tooltip,
@@ -985,7 +985,7 @@ TypeScript adds optional types to JavaScript that support tools for large-scale 
 **13.14. TSConfig**
 
 The TSConfig is a json5 file that configures both your compiler flags and declares where to find files.
-```js
+ ```js
 {
   // Change this to match your project
   include: ["src/**/*"],
@@ -1006,4 +1006,149 @@ The TSConfig is a json5 file that configures both your compiler flags and declar
 }
 ```
 
+### 14. 5 CSS Practices To Avoid as a Web Developer
 
+**14.1. Set Margins or Padding and Then Reset Them**
+Don't do this
+
+```css
+.item {
+  margin-right: 1.6rem;
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+```
+
+You can use:
+ ```css
+.item:not(:last-child) {
+  margin-right: 1.6rem;
+}
+```
+or
+ ```css
+.item:nth-child(n+2) {
+  margin-left: 1.6rem;
+}
+```
+
+**14.2. Add display: block for Elements With position: absolute or position: fixed**
+Do not do this:
+```css
+.button::before {
+  content: "";
+  position: absolute;
+  display: block;
+}
+```
+
+Or:
+```css
+.button::before {
+  content: "";
+  position: fixed;
+  display: block;
+}
+```
+
+You can use:
+```css
+.button::before {
+  content: "";
+  position: absolute;
+}
+```
+or 
+```css
+.button::before {
+  content: "";
+  position: fixed;
+}
+```
+
+
+**14.3. Use transform: translate (-50%, -50%) To Center**
+Do not do this:
+```css
+.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+You can use:
+```css
+.parent {
+  display: flex;
+}
+
+.child {
+  margin: auto;
+}
+```
+
+**14.4. Use width: 100% for Block Elements**
+Do not do this
+```html
+<div class="parent">
+  <div class="child">Item 1</div>
+  <div class="child">Item 2</div>
+  <div class="child">Item 3</div>
+  <div class="child">Item 4</div>
+</div>
+```
+```css
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.child {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .child {
+    width: 25%;
+  }
+}
+```
+
+You can use:
+```css
+@media (min-width: 1024px) {
+  .parent {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .child {
+    width: 25%;
+  }
+}
+```
+**14.5.  Set display: block for Flex Items**
+Do not do this:
+```css
+.parent {
+  display: flex;
+}
+
+.child {
+  display: block;
+}
+```
+
+You can use:
+```css
+.parent {
+  display: flex;
+}
+```
