@@ -178,3 +178,55 @@ server.use((req, res, next) => {
   next();
 });
 ```
+
+### 9. Custom output cho endpoint listing
+To modify responses, overwrite router.render method:
+
+// In this example, returned resources will be wrapped in a body property
+```js
+router.render = (req, res) => {
+  res.jsonp({
+    body: res.locals.data
+  })
+}
+```
+
+Code example:
+```js
+const header = res.getHeaders()
+
+const totalCountHeader = headers['x-total-count']
+
+if (req.method === 'GET' && totalCountHeader) {
+  const queryOarams = queryString.parse(req._parseUrl.query)
+
+  const result = {
+    data: res.locals.data,
+    pagination: {
+      _page: Number.parseInt(queryParams._page) || 1,
+      _limit: Number.parseInt(queryParams._limit) || 10,
+      _totalRows: Number.parseInt(totalCountHeader)
+    }
+  }
+
+  return res.jsonp(result)
+}
+```
+
+**? What is the different between `json` & `jsonp` ?**
+- jsonp (Json With Padding)
+- Basically, you're not allowed to request JSON data from another domain via AJAX due to same-origin policy. 
+- We can abuse `jsonp` and use it to fetch data instead! 
+- JSON is already valid JavaScript, but we can't just return JSON in our script file
+- So what we do instead is tell the web service to call a function on our behalf when it's ready.
+
+--> In sum, JSONP allows you to specify a callback function that is passed your JSON object. This allows you to bypass the same origin policy and load JSON `from an external server` into the JavaScript on your webpage.
+```js
+function func(json){
+  alert(json.name);
+}
+var elm = document.createElement("script");
+elm.setAttribute("type", "text/javascript");
+elm.src = "http://example.com/jsonp";
+document.body.appendChild(elm);
+```
