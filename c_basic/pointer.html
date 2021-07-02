@@ -1,0 +1,1129 @@
+<!DOCTYPE html><html><head>
+      <title>pointer</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/teq/.vscode/extensions/shd101wyy.markdown-preview-enhanced-0.5.21/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h3 class="mume-header" id="1-ki%E1%BA%BFn-th%E1%BB%A9c-c%C6%A1-b%E1%BA%A3n-con-tr%E1%BB%8F-trong-c">1. KI&#x1EBE;N TH&#x1EE8;C C&#x1A0; B&#x1EA2;N CON TR&#x1ECE; TRONG C</h3>
+
+<p>Ngu&#x1ED3;n: <a href="https://nguyenvanhieu.vn/con-tro-trong-c/">https://nguyenvanhieu.vn/con-tro-trong-c/</a><br>
+Ch&#x1B0;&#x1A1;ng tr&#xEC;nh v&#xED; d&#x1EE5;:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+
+  <span class="token keyword">int</span> number <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>number<span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;&amp;number=%d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;number=%d\n&quot;</span><span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;----------\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;p=%d\n&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;&amp;p=%d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;*p=%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; nh&#x1EAD;n &#x111;&#x1B0;&#x1EE3;c:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token operator">&amp;</span>number<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1300913484</span>
+number<span class="token operator">=</span><span class="token number">10</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>
+p<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1300913484</span>
+<span class="token operator">&amp;</span>p<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1300913480</span>
+<span class="token operator">*</span>p<span class="token operator">=</span><span class="token number">10</span>
+</pre><p>Bi&#x1EBF;t:</p>
+<ul>
+<li><code>&amp;number</code>: l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; &#xF4; nh&#x1EDB; c&#x1EE7;a bi&#x1EBF;n number.</li>
+<li><code>number</code>: l&#xE0; gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n number &#x111;&#x1B0;&#x1A1;c l&#x1B0;u t&#x1EA1;i &#x111;&#x1ECB;a ch&#x1EC9; <code>&amp;number</code>.</li>
+</ul>
+<p>Nh&#x1B0; v&#x1EAD;y sau khi ch&#x1EA1;y l&#x1EC7;nh <code>int *p = &amp;number</code> ta &#x111;o&#xE1;n &#x111;&#x1B0;&#x1EE3;c c&#xE1;c th&#xF4;ng s&#x1ED1; sau:</p>
+<ul>
+<li><code>p = &amp;number</code>: suy ra p l&#x1B0;u &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n number. Hay n&#xF3;i &#x111;&#xFA;ng h&#x1A1;n <strong>gi&#xE1; tr&#x1ECB;</strong> c&#x1EE7;a p l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n number &#x2192; <strong>p tr&#x1ECF; &#x111;&#x1EBF;n &#x111;&#x1ECB;a ch&#x1EC9; b&#x1ED9; nh&#x1EDB; c&#x1EE7;a bi&#x1EBF;n number</strong></li>
+<li><code>*p = number</code>: suy ra *p mang gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n number.</li>
+<li>Gi&#xE1; tr&#x1ECB; c&#xF2;n l&#x1EA1;i l&#xE0; <code>&amp;p</code>: n&#xF3; &#x111;&#x1A1;n ch&#x1EC9; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a con tr&#x1ECF; p.</li>
+</ul>
+<p><img src="../images/pointer1.png" alt="pointer"></p>
+<h4 class="mume-header" id="1-%C4%91%E1%BB%8Ba-ch%E1%BB%89-c%E1%BB%A7a-bi%E1%BA%BFn-c"><strong>1. &#x110;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n C</strong></h4>
+
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword">int</span> number<span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nNhap number = &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nnumber = %d&quot;</span><span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p><em>T&#x1EA1;i sao khi d&#xF9;ng h&#xE0;m scanf ch&#xFA;ng ta c&#x1EA7;n truy&#x1EC1;n v&#xE0;o &amp;number? C&#xF2;n h&#xE0;m printf ta l&#x1EA1;i kh&#xF4;ng c&#xF3; d&#x1EA5;u &amp; kia?</em><br>
+&#x2192; B&#x1EDF;i v&#xEC; n&#x1EBF;u b&#x1EA1;n mu&#x1ED1;n nh&#x1EAD;p gi&#xE1; tr&#x1ECB; cho bi&#x1EBF;n, h&#xE0;m <strong>scanf</strong> c&#x1EA7;n bi&#x1EBF;t &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n &#x111;&#xF3; &#x1EDF; trong b&#x1ED9; nh&#x1EDB;.<br>
+&#x2192; M&#x1ED7;i bi&#x1EBF;n m&#xE0; b&#x1EA1;n khai b&#xE1;o &#x111;&#x1EC1;u c&#xF3; &#x111;&#x1ECB;a ch&#x1EC9; ri&#xEA;ng c&#x1EE7;a n&#xF3; v&#xE0; gi&#xE1; tr&#x1ECB; m&#xE0; n&#xF3; &#x111;ang l&#x1B0;u tr&#x1EEF;. &#x110;&#x1EC3; xem &#x111;&#x1B0;&#x1EE3;c &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n, b&#x1EA1;n th&#xEA;m d&#x1EA5;u &amp; v&#xE0;o tr&#x1B0;&#x1EDB;c t&#xEA;n bi&#x1EBF;n.</p>
+<p><strong>Ch&#xFA; &#xFD;</strong>:<br>
+B&#x1EA1;n c&#xF3; th&#x1EC3; s&#x1EBD; nh&#x1EAD;n &#x111;&#x1B0;&#x1EE3;c c&#xE1;c &#x111;&#x1ECB;a ch&#x1EC9; kh&#xE1;c nhau m&#x1ED7;i khi ch&#x1EA1;y code.</p>
+<h4 class="mume-header" id="2-con-tr%E1%BB%8F-trong-c"><strong>2. Con tr&#x1ECF; trong C</strong></h4>
+
+<ul>
+<li>Con tr&#x1ECF; trong C c&#x169;ng ch&#x1EC9; l&#xE0; bi&#x1EBF;n, c&#x169;ng c&#xF3; th&#x1EC3; <strong>khai b&#xE1;o</strong>, <strong>kh&#x1EDF;i t&#x1EA1;o</strong> v&#xE0; l&#x1B0;u tr&#x1EEF; <strong>gi&#xE1; tr&#x1ECB;</strong> v&#xE0; c&#xF3; <strong>&#x111;&#x1ECB;a ch&#x1EC9;</strong> c&#x1EE7;a ri&#xEA;ng n&#xF3;.</li>
+<li>Con tr&#x1ECF; kh&#xF4;ng l&#x1B0;u gi&#xE1; tr&#x1ECB; b&#xEC;nh th&#x1B0;&#x1EDD;ng, n&#xF3; l&#xE0; bi&#x1EBF;n tr&#x1ECF; t&#x1EDB;i 1 &#x111;&#x1ECB;a ch&#x1EC9; kh&#xE1;c, t&#x1EE9;c mang gi&#xE1; tr&#x1ECB; l&#xE0; 1 <strong>&#x111;&#x1ECB;a ch&#x1EC9;</strong>.</li>
+</ul>
+<p><strong>C&#xE1;ch khai b&#xE1;o con tr&#x1ECF;</strong>:<br>
+Con tr&#x1ECF; trong C c&#x169;ng c&#xF3; th&#x1EC3; khai b&#xE1;o gi&#x1ED1;ng nh&#x1B0; bi&#x1EBF;n b&#xEC;nh th&#x1B0;&#x1EDD;ng, t&#xEA;n bi&#x1EBF;n l&#xE0; m&#x1ED9;t &#x111;&#x1ECB;nh danh h&#x1EE3;p l&#x1EC7;. C&#xFA; ph&#xE1;p nh&#x1B0; sau:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token operator">&lt;</span>ki&#x1EC3;u d&#x1EEF; li&#x1EC7;u<span class="token operator">&gt;</span> <span class="token operator">*</span> <span class="token operator">&lt;</span>t&#xEA;n bi&#x1EBF;n<span class="token operator">&gt;</span>
+</pre><p>Trong &#x111;&#xF3;:</p>
+<ul>
+<li>Ki&#x1EC3;u d&#x1EEF; li&#x1EC7;u c&#xF3; th&#x1EC3; l&#xE0;: void, int, float, double,&#x2026;</li>
+<li>D&#x1EA5;u * tr&#x1B0;&#x1EDB;c t&#xEA;n bi&#x1EBF;n l&#xE0; k&#xFD; hi&#x1EC7;u b&#xE1;o cho tr&#xEC;nh bi&#xEA;n d&#x1ECB;ch bi&#x1EBF;t ta &#x111;ang khai b&#xE1;o con tr&#x1ECF;.</li>
+</ul>
+<p>V&#xED; d&#x1EE5;:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>p_i<span class="token punctuation">;</span> <span class="token comment">// khai b&#xE1;o con tr&#x1ECF; &#x111;&#x1EC3; tr&#x1ECF; t&#x1EDB;i bi&#x1EBF;n ki&#x1EC3;u nguy&#xEA;n</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">,</span> val<span class="token punctuation">;</span> <span class="token comment">// khai b&#xE1;o con tr&#x1ECF; p ki&#x1EC3;u int, bi&#x1EBF;n val (kh&#xF4;ng ph&#x1EA3;i con tr&#x1ECF;) ki&#x1EC3;u int</span>
+<span class="token keyword">float</span> <span class="token operator">*</span>p_f<span class="token punctuation">;</span> <span class="token comment">// khai b&#xE1;o con tr&#x1ECF; &#x111;&#x1EC3; tr&#x1ECF; t&#x1EDB;i bi&#x1EBF;n ki&#x1EC3;u th&#x1EF1;c</span>
+<span class="token keyword">char</span> <span class="token operator">*</span>p_char<span class="token punctuation">;</span> <span class="token comment">// khai b&#xE1;o con tr&#x1ECF; &#x111;&#x1EC3; tr&#x1ECF; t&#x1EDB;i bi&#x1EBF;n ki&#x1EC3;u k&#xFD; t&#x1EF1;</span>
+<span class="token keyword">void</span> <span class="token operator">*</span>p_v<span class="token punctuation">;</span> <span class="token comment">// con tr&#x1ECF; ki&#x1EC3;u void (kh&#xF4;ng ki&#x1EC3;u)</span>
+</pre><p><strong>G&#xE1;n gi&#xE1; tr&#x1ECB; cho con tr&#x1ECF;</strong></p>
+<ul>
+<li>N&#x1EBF;u con tr&#x1ECF; &#x111;&#x1B0;&#x1EE3;c s&#x1EED; d&#x1EE5;ng m&#xE0; kh&#xF4;ng &#x111;&#x1B0;&#x1EE3;c kh&#x1EDF;i t&#x1EA1;o, gi&#xE1; tr&#x1ECB; c&#x1EE7;a n&#xF3; s&#x1EBD; l&#xE0; gi&#xE1; tr&#x1ECB; r&#xE1;c</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">,</span> value<span class="token punctuation">;</span>
+value <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+p <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span> <span class="token comment">// kh&#x1EDF;i t&#x1EA1;o gi&#xE1; tr&#x1ECB; cho con tr&#x1ECF; p l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a value</span>
+</pre><p>Ho&#x1EB7;c b&#x1EA1;n c&#x169;ng c&#xF3; th&#x1EC3; khai b&#xE1;o v&#xE0; kh&#x1EDF;i t&#x1EA1;o &#x111;&#x1ED3;ng th&#x1EDD;i:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword">int</span> value <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span> <span class="token comment">// khai b&#xE1;o con tr&#x1ECF; p v&#xE0; kh&#x1EDF;i t&#x1EA1;o gi&#xE1; tr&#x1ECB; cho con tr&#x1ECF; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a value</span>
+</pre><p><strong>L&#x1B0;u &#xFD;</strong>:</p>
+<ul>
+<li>Con tr&#x1ECF; khi khai b&#xE1;o n&#xEA;n &#x111;&#x1B0;&#x1EE3;c kh&#x1EDF;i t&#x1EA1;o gi&#xE1; tr&#x1ECB; ngay.</li>
+<li>Con tr&#x1ECF; ki&#x1EC3;u void l&#xE0; lo&#x1EA1;i bi&#x1EBF;n con tr&#x1ECF; t&#x1ED5;ng qu&#xE1;t, n&#xF3; c&#xF3; th&#x1EC3; nh&#x1EAD;n &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n b&#x1EA5;t k&#x1EF3; &#x1EDF; b&#x1EA5;t c&#x1EE9; ki&#x1EC3;u d&#x1EEF; li&#x1EC7;u n&#xE0;o.</li>
+<li>Con tr&#x1ECF; ki&#x1EC3;u <code>float</code> kh&#xF4;ng th&#x1EC3; tr&#x1ECF; &#x111;&#x1EBF;n con tr&#x1ECF; ki&#x1EC3;u <code>int</code>,... &#x2192; ch&#x1EC9; tr&#x1ECF; &#x111;&#x1B0;&#x1EE3;c khi c&#xF9;ng ki&#x1EC3;u</li>
+<li>Kh&#x1EDF;i t&#x1EA1;o con tr&#x1ECF; b&#x1EB1;ng &#x111;&#x1ECB;a ch&#x1EC9; NULL <code>int *p = NULL</code> khi &#x111;&#xF3; con tr&#x1ECF; NULL c&#xF3; gi&#xE1; tr&#x1ECB; l&#xE0; 0.</li>
+</ul>
+<p><strong>B&#x1EA3;n ch&#x1EA5;t c&#x1EE7;a con tr&#x1ECF; trong C</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token comment">// Khai b&#xE1;o + kh&#x1EDF;i t&#x1EA1;o bi&#x1EBF;n</span>
+  <span class="token keyword">int</span> value <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua `value` = %d&quot;</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nDia tri cua `value` = %d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n-------------------\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/*
+  Khai b&#xE1;o + kh&#x1EDF;i t&#x1EA1;o bi&#x1EBF;n con tr&#x1ECF; p
+  c&#xF3; gi&#xE1; tr&#x1ECB; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n value
+  */</span>
+  <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua con tro `p` = %d&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nDia tri cua con tro `p` = %d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua bien ma con tro `p` dang tro toi = %d&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n-------------------\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/*
+  Thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n value th&#xF4;ng qua con tr&#x1ECF; p
+  Gi&#x1ED1;ng nh&#x1B0; h&#xE0;m scanf() c&#xF3; th&#x1EC3; thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n khi nh&#x1EAD;n v&#xE0;o &#x111;&#x1ECB;a ch&#x1EC9;,
+  con tr&#x1ECF; khi c&#xF3; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a 1 bi&#x1EBF;n ho&#xE0;n to&#xE0;n c&#xF3; th&#x1EC3; thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a
+  bi&#x1EBF;n &#x111;&#xF3; theo c&#xE1;ch d&#x1B0;&#x1EDB;i &#x111;&#xE2;y:
+  */</span>
+  <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n value</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua `value` = %d&quot;</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// Thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n value th&#xF4;ng qua `p`</span>
+  <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+  <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n value</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua `value` = %d&quot;</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n ma con tr&#x1ECF; p &#x111;ang tr&#x1ECF; t&#x1EDB;i d&#xF9;ng to&#xE1;n t&#x1EED; *</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua bien ma con tro `p` dang tro toi = %d&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n-------------------\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">/*
+  Vi&#x1EC7;c l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n th&#xF4;ng qua con tr&#x1ECF;
+  ch&#x1EC9; l&#xE0; 1 c&#xE1;ch kh&#xE1;c &#x111;&#x1EC3; l&#x1EA5;y &#x111;&#x1B0;&#x1EE3;c gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n &#x111;&#xF3;.
+
+  */</span>
+  value <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+  <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n value</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua `value` = %d&quot;</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n ma con tr&#x1ECF; p &#x111;ang tr&#x1ECF; t&#x1EDB;i d&#xF9;ng to&#xE1;n t&#x1EED; *</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri cua bien ma con tro `p` dang tro toi = %d&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Gia tri cua `value` <span class="token operator">=</span> <span class="token number">10</span>
+Dia tri cua `value` <span class="token operator">=</span> <span class="token number">6487580</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+Gia tri cua con tro `p` <span class="token operator">=</span> <span class="token number">6487580</span>
+Dia tri cua con tro `p` <span class="token operator">=</span> <span class="token number">6487568</span>
+Gia tri cua bien ma con tro `p` dang tro toi <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+Gia tri cua `value` <span class="token operator">=</span> <span class="token number">10</span>
+Gia tri cua `value` <span class="token operator">=</span> <span class="token number">100</span>
+Gia tri cua bien ma con tro `p` dang tro toi <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">-</span>
+
+Gia tri cua `value` <span class="token operator">=</span> <span class="token number">1000</span>
+Gia tri cua bien ma con tro `p` dang tro toi <span class="token operator">=</span> <span class="token number">1000</span>
+</pre><p>Qua v&#xED; d&#x1EE5; n&#xE0;y, b&#x1EA1;n c&#xF3; th&#x1EC3; th&#x1EA5;y r&#xF5; s&#x1EF1; &#x111;&#xFA;ng &#x111;&#x1EAF;n c&#x1EE7;a c&#xE1;c k&#x1EBF;t lu&#x1EAD;n sau &#x111;&#xE2;y v&#x1EC1; con tr&#x1ECF;:</p>
+<ul>
+<li>&#x110;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n value ch&#xED;nh l&#xE0; gi&#xE1; tr&#x1ECB; c&#x1EE7;a con tr&#x1ECF; p, &#x111;&#x1EC1;u l&#xE0; 6487580. M&#x1ED7;i l&#x1EA7;n ch&#x1EA1;y c&#xF3; th&#x1EC3; kh&#xE1;c nhau.</li>
+<li>Con tr&#x1ECF; c&#xF3; th&#x1EC3; l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; n&#xF3; &#x111;ang tr&#x1ECF; t&#x1EDB;i b&#x1EB1;ng to&#xE1;n t&#x1EED; *</li>
+<li>Con tr&#x1ECF; c&#xF3; th&#x1EC3; thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; n&#xF3; &#x111;ang tr&#x1ECF; t&#x1EDB;i. Do n&#xF3; mang &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n, khi &#x111;&#xF3; n&#xF3; ho&#xE0;n to&#xE0;n c&#xF3; quy&#x1EC1;n thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n &#x111;&#xF3;.</li>
+</ul>
+<p><strong>C&#xE1;c l&#x1ED7;i th&#x1B0;&#x1EDD;ng g&#x1EB7;p v&#x1EDB;i con tr&#x1ECF;</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token keyword">int</span> value<span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">;</span>
+
+<span class="token comment">// Sai! p c&#x1EA7;n &#x111;&#x1ECB;a ch&#x1EC9;,</span>
+<span class="token comment">// value kh&#xF4;ng ph&#x1EA3;i l&#xE0; c&#xE1;i &#x111;&#x1ECB;a ch&#x1EC9; &#x111;&#xF3;.</span>
+p <span class="token operator">=</span> value<span class="token punctuation">;</span>
+
+<span class="token comment">// Sai! *p l&#xE0; gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i,</span>
+<span class="token comment">// &amp;value l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9;.</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span>
+
+<span class="token comment">// &#x110;&#xFA;ng r&#x1ED3;i! p c&#x1EA7;n 1 &#x111;&#x1ECB;a ch&#x1EC9;,</span>
+<span class="token comment">// &amp;value l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n value.</span>
+p <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span>
+
+<span class="token comment">// &#x110;&#xFA;ng! *p l&#xE0; gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i, v&#xE0;</span>
+<span class="token comment">// c c&#x169;ng l&#xE0; gi&#xE1; tr&#x1ECB; (kh&#xF4;ng ph&#x1EA3;i &#x111;&#x1ECB;a ch&#x1EC9;).</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> value<span class="token punctuation">;</span>
+</pre><p>C&#xE1;c b&#x1EA1;n khi m&#x1EDB;i h&#x1ECD;c con tr&#x1ECF; s&#x1EBD; m&#xF4;ng lung v&#x1EC1; d&#x1EA5;u * &#x1EDF; ph&#x1EA7;n khai b&#xE1;o v&#xE0; khi l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token comment">// D&#x1EA5;u * &#x1EDF; &#x111;&#xE2;y &#x111;&#x1EC3; ch&#xFA;ng ta bi&#x1EBF;t ch&#xFA;ng ta &#x111;ang khai b&#xE1;o con tr&#x1ECF;.</span>
+    <span class="token comment">// Kh&#xF4;ng ph&#x1EA3;i l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a n&#xF3; nh&#xE9;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>c<span class="token punctuation">;</span>
+    <span class="token comment">// Khai b&#xE1;o tr&#xEA;n t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng</span>
+    <span class="token comment">// int *p;</span>
+    <span class="token comment">// p = &amp;c;</span>
+    <span class="token comment">// N&#x1EBF;u b&#x1EA1;n mu&#x1ED1;n ph&#xE2;n bi&#x1EC7;t 2 th&#x1EB1;ng n&#xE0;y, khi khai b&#xE1;o c&#xF3; th&#x1EC3; vi&#x1EBF;t nh&#x1B0; sau:</span>
+    <span class="token comment">// int* p = &amp;c;</span>
+
+    <span class="token comment">// L&#x1EA5;y gi&#xE1; ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i, ch&#xED;nh l&#xE0; gi&#xE1; tr&#x1ECB; c&#x1EE7;a c</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
+<span class="token punctuation">}</span>
+</pre><hr>
+<h3 class="mume-header" id="2-m%E1%BB%91i-quan-h%E1%BB%87-gi%E1%BB%AFa-con-tr%E1%BB%8F-v%C3%A0-m%E1%BA%A3ng">2. M&#x1ED0;I QUAN H&#x1EC6; GI&#x1EEE;A CON TR&#x1ECE; V&#xC0; M&#x1EA2;NG</h3>
+
+<p>Ngu&#x1ED3;n: <a href="https://nguyenvanhieu.vn/moi-quan-he-giua-con-tro-va-mang/">https://nguyenvanhieu.vn/moi-quan-he-giua-con-tro-va-mang/</a><br>
+<strong>C&#xE1;c ph&#x1EA7;n t&#x1EED; c&#x1EE7;a m&#x1EA3;ng l&#xE0; c&#xE1;c &#xF4; nh&#x1EDB; li&#xEA;n ti&#x1EBF;p</strong></p>
+<p>Nh&#x1EAF;c l&#x1EA1;i kh&#xE1;i ni&#x1EC7;m v&#x1EC1; m&#x1EA3;ng: <em>&#x201C;M&#x1EA3;ng l&#xE0; m&#x1ED9;t t&#x1EAD;p h&#x1EE3;p tu&#x1EA7;n t&#x1EF1; c&#xE1;c ph&#x1EA7;n t&#x1EED; c&#xF3; c&#xF9;ng ki&#x1EC3;u d&#x1EEF; li&#x1EC7;u v&#xE0; c&#xE1;c ph&#x1EA7;n t&#x1EED; &#x111;&#x1B0;&#x1EE3;c l&#x1B0;u tr&#x1EEF; trong m&#x1ED9;t d&#xE3;y c&#xE1;c &#xF4; nh&#x1EDB; li&#xEA;n t&#x1EE5;c tr&#xEA;n b&#x1ED9; nh&#x1EDB;&#x201C;</em>.</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// Khai b&#xE1;o m&#x1EA3;ng c&#xF3; 5 ph&#x1EA7;n t&#x1EED;</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Dia chi cua mang arr = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia chi cua mang arr = %d\n&quot;</span><span class="token punctuation">,</span> arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Th&#x1EED; in &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a t&#x1EEB;ng ph&#x1EA7;n t&#x1EED;</span>
+    <span class="token comment">// sizeof (arr): K&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a m&#x1EA3;ng</span>
+    <span class="token comment">// sizeof (int): K&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a ki&#x1EC3;u int</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Dia chi cua arr[%d] = %d\n&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Dia chi cua mang arr <span class="token operator">=</span> <span class="token number">6487552</span>
+Gia chi cua mang arr <span class="token operator">=</span> <span class="token number">6487552</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487552</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487556</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487560</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487564</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487568</span>
+</pre><p><strong>Nh&#x1EAD;n x&#xE9;t</strong>:</p>
+<ul>
+<li>C&#xE1;c ph&#x1EA7;n t&#x1EED; li&#xEA;n ti&#x1EBF;p c&#xF3; &#x111;&#x1ECB;a ch&#x1EC9; c&#xE1;ch nhau 4 gi&#xE1; tr&#x1ECB;, b&#x1EDF;i v&#xEC; 1 ph&#x1EA7;n t&#x1EED; ki&#x1EC3;u int c&#xF3; k&#xED;ch th&#x1B0;&#x1EDB;c 4 bytes (m&#xE1;y t&#xED;nh x64). N&#xEA;n ta ch&#x1EAF;c ch&#x1EAF;n c&#xE1;c ph&#x1EA7;n t&#x1EED; m&#x1EA3;ng &#x111;&#x1B0;&#x1EE3;c x&#x1EBF;p c&#x1EA1;nh nhau trong b&#x1ED9; nh&#x1EDB;.</li>
+<li>Trong v&#xED; d&#x1EE5; n&#xE0;y th&#x1EA5;y r&#x1EB1;ng, &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n m&#x1EA3;ng ch&#xED;nh l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a ph&#x1EA7;n t&#x1EED; &#x111;&#x1EA7;u ti&#xEA;n c&#x1EE7;a m&#x1EA3;ng. V&#xE0; gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#x1EA3;ng c&#x169;ng ch&#xED;nh l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a ph&#x1EA7;n t&#x1EED; &#x111;&#x1EA7;u ti&#xEA;n c&#x1EE7;a m&#x1EA3;ng.</li>
+<li>Nh&#x1B0; v&#x1EAD;y, &amp;arr[0] t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng &amp;arr v&#xE0; t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng arr. &#x110;i&#x1EC1;u &#x111;&#xF3; c&#xF3; &#x111;&#x1B0;&#x1EE3;c l&#xE0; do bi&#x1EBF;n arr tr&#x1ECF; t&#x1EDB;i ph&#x1EA7;n t&#x1EED; &#x111;&#x1EA7;u ti&#xEA;n c&#x1EE7;a m&#x1EA3;ng.</li>
+</ul>
+<p><strong>To&#xE1;n t&#x1EED; t&#x103;ng v&#xE0; gi&#x1EA3;m c&#x1EE7;a con tr&#x1ECF;</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Khai b&#xE1;o m&#x1EA3;ng c&#xF3; 5 ph&#x1EA7;n t&#x1EED;</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token comment">// Th&#x1EED; in &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a t&#x1EEB;ng ph&#x1EA7;n t&#x1EED;</span>
+    <span class="token comment">// sizeof (arr): K&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a m&#x1EA3;ng</span>
+    <span class="token comment">// sizeof (int): K&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a ki&#x1EC3;u int</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Dia chi cua arr[%d] = %d\n&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n___________________________\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// G&#xE1;n con tr&#x1ECF; p cho ph&#x1EA7;n t&#x1EED; &#x111;&#x1EA7;u ti&#xEA;n c&#x1EE7;a m&#x1EA3;ng</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua con tro p = %d\n&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua dia chi ma p dang tro den = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// To&#xE1;n t&#x1EED; t&#x103;ng tr&#xEA;n con tr&#x1ECF;</span>
+    p<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// ho&#x1EB7;c p = p + 1;</span>
+
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua con tro p = %d\n&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua dia chi ma p dang tro den = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// To&#xE1;n t&#x1EED; t&#x103;ng tr&#xEA;n con tr&#x1ECF;</span>
+    p <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// ho&#x1EB7;c p = p + 2;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua con tro p = %d\n&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua dia chi ma p dang tro den = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// To&#xE1;n t&#x1EED; gi&#x1EA3;m tr&#xEA;n con tr&#x1ECF;</span>
+    p<span class="token operator">--</span><span class="token punctuation">;</span> <span class="token comment">// ho&#x1EB7;c p = p - 1;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua con tro p = %d\n&quot;</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua dia chi ma p dang tro den = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p><strong>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y:</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Dia chi cua arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487536</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487540</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487544</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487548</span>
+Dia chi cua arr<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">6487552</span>
+
+___________________________
+Gia tri cua con tro p <span class="token operator">=</span> <span class="token number">6487536</span>
+Gia tri cua dia chi ma p dang tro den <span class="token operator">=</span> <span class="token number">1</span>
+Gia tri cua con tro p <span class="token operator">=</span> <span class="token number">6487540</span>
+Gia tri cua dia chi ma p dang tro den <span class="token operator">=</span> <span class="token number">2</span>
+Gia tri cua con tro p <span class="token operator">=</span> <span class="token number">6487548</span>
+Gia tri cua dia chi ma p dang tro den <span class="token operator">=</span> <span class="token number">4</span>
+Gia tri cua con tro p <span class="token operator">=</span> <span class="token number">6487544</span>
+Gia tri cua dia chi ma p dang tro den <span class="token operator">=</span> <span class="token number">3</span>
+</pre><p>Nh&#x1B0; b&#x1EA1;n th&#x1EA5;y:</p>
+<ul>
+<li>Khi d&#xF9;ng to&#xE1;n t&#x1EED; t&#x103;ng/ gi&#x1EA3;m tr&#xEA;n bi&#x1EBF;n con tr&#x1ECF;, n&#xF3; s&#x1EBD; nh&#x1EA3;y sang <strong>&#xF4; nh&#x1EDB; li&#x1EC1;n k&#x1EC1;</strong> ch&#x1EE9; kh&#xF4;ng ph&#x1EA3;i t&#x103;ng &#x111;&#x1ECB;a ch&#x1EC9; m&#xE0; n&#xF3; &#x111;ang tr&#x1ECF; l&#xEA;n 1. Do con tr&#x1ECF; p l&#xE0; ki&#x1EC3;u int n&#xEA;n m&#x1ED7;i b&#x1B0;&#x1EDB;c t&#x103;ng, gi&#xE1; tr&#x1ECB; c&#x1EE7;a p <strong>t&#x103;ng th&#xEA;m 4</strong> gi&#xE1; tr&#x1ECB;. (L&#x1B0;u &#xFD;: <strong>gi&#xE1; tr&#x1ECB;</strong> c&#x1EE7;a con tr&#x1ECF; <strong>l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9;</strong> m&#xE0; n&#xF3; &#x111;ang tr&#x1ECF; t&#x1EDB;i)</li>
+<li>N&#x1EBF;u b&#x1EA1;n mu&#x1ED1;n t&#x103;ng gi&#xE1; tr&#x1ECB; c&#x1EE7;a &#x111;&#x1ECB;a ch&#x1EC9; n&#x1A1;i con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i, h&#xE3;y d&#xF9;ng c&#xE1;ch d&#x1B0;&#x1EDB;i &#x111;&#xE2;y:</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Khai b&#xE1;o m&#x1EA3;ng c&#xF3; 5 ph&#x1EA7;n t&#x1EED;</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// G&#xE1;n con tr&#x1ECF; p cho ph&#x1EA7;n t&#x1EED; &#x111;&#x1EA7;u ti&#xEA;n c&#x1EE7;a m&#x1EA3;ng</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua dia chi ma p dang tro den = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// T&#x103;ng gi&#xE1; tr&#x1ECB; c&#x1EE7;a &#x111;&#x1ECB;a ch&#x1EC9; m&#xE0; `p` &#x111;ang tr&#x1ECF; t&#x1EDB;i th&#xF4;ng qua `p`.</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token operator">+=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a &#x111;&#x1ECB;a ch&#x1EC9; m&#xE0; p &#x111;ang tr&#x1ECF; &#x111;&#x1EBF;n</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Gia tri cua dia chi ma p dang tro den = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Gia tri cua dia chi ma p dang tro den = 1</span>
+<span class="token comment">// Gia tri cua dia chi ma p dang tro den = 6</span>
+</pre><p><strong>M&#x1ED1;i quan h&#x1EC7; gi&#x1EEF;a con tr&#x1ECF; v&#xE0; m&#x1EA3;ng trong C:</strong></p>
+<p>T&#x1EDB;i &#x111;&#xE2;y ch&#x1EAF;c h&#x1EB3;n b&#x1EA1;n &#x111;&#xE3; h&#xEC;nh dung &#x111;&#x1B0;&#x1EE3;c s&#x1EF1; li&#xEA;n h&#x1EC7; gi&#x1EEF;a con tr&#x1ECF; v&#xE0; m&#x1EA3;ng, m&#xEC;nh s&#x1EBD; c&#xF9;ng c&#xE1;c b&#x1EA1;n &#x111;i t&#x1EDB;i c&#xE1;c k&#x1EBF;t lu&#x1EAD;n v&#x1EC1; con tr&#x1ECF; v&#xE0; m&#x1EA3;ng nh&#xE9;.</p>
+<p><img src="./../images/pointer2.png" alt="pointer2"></p>
+<p>V&#x1EDB;i m&#x1EA3;ng trong &#x1EA3;nh ph&#xED;a tr&#xEA;n, ta c&#xF3;:</p>
+<ul>
+<li><code>&amp;x[0]</code> v&#xE0; <code>x</code> c&#xF3; c&#xF9;ng gi&#xE1; tr&#x1ECB;, v&#xE0; <code>x[0]</code> hay <code>*x</code> l&#xE0; t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng nhau.</li>
+<li><code>&amp;x[1]</code> t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng v&#x1EDB;i <code>x+1</code> v&#xE0; <code>x[1]</code> t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng v&#x1EDB;i <code>*(x+1)</code>.</li>
+<li><code>&amp;x[2]</code> t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng v&#x1EDB;i <code>x+2</code> v&#xE0; <code>x[2]</code> t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng v&#x1EDB;i <code>*(x+2)</code>.<br>
+&#x2026;</li>
+<li>T&#xF3;m l&#x1EA1;i, <code>&amp;x[i]</code> t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng v&#x1EDB;i <code>x+i</code> v&#xE0; <code>x[i]</code> t&#x1B0;&#x1A1;ng &#x111;&#x1B0;&#x1A1;ng v&#x1EDB;i <code>*(x+i)</code>.</li>
+</ul>
+<p>H&#xE3;y th&#x1EED; nh&#x1EAD;p xu&#x1EA5;t m&#x1EA3;ng theo c&#xE1;ch m&#x1EDB;i n&#xE0;o:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token comment">// V&#xED; d&#x1EE5; m&#x1ED1;i quan h&#x1EC7; gi&#x1EEF;a con tr&#x1ECF; v&#xE0; m&#x1EA3;ng - L&#x1EAD;p Tr&#xEC;nh Kh&#xF4;ng Kh&#xF3;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_SIZE</span> <span class="token expression"><span class="token number">100</span></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span>MAX_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">do</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap so luong phan tu: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Nh&#x1EAD;p m&#x1EA3;ng</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap a[%d] = &quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>arr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Xu&#x1EA5;t m&#x1EA3;ng</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri a[%d] = %d&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>arr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Nhap so luong phan tu<span class="token operator">:</span> <span class="token number">5</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span>
+
+Gia tri a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span>
+</pre><p><strong>V&#xED; d&#x1EE5;</strong><br>
+<strong>D&#xF9;ng con tr&#x1ECF; &#x111;&#x1EC3; nh&#x1EAD;p v&#xE0; duy&#x1EC7;t m&#x1EA3;ng nh&#x1B0; th&#x1EBF; n&#xE0;o?</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token comment">// V&#xED; d&#x1EE5; m&#x1ED1;i quan h&#x1EC7; gi&#x1EEF;a con tr&#x1ECF; v&#xE0; m&#x1EA3;ng</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">MAX_SIZE</span> <span class="token expression"><span class="token number">100</span></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span>MAX_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">do</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap so luong phan tu: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// Nh&#x1EAD;p m&#x1EA3;ng</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap a[%d] = &quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>p <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Xu&#x1EA5;t m&#x1EA3;ng</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nGia tri a[%d] = %d&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>p <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>i <span class="token operator">=</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token operator">&amp;</span>arr<span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">// L&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a ph&#x1EA7;n t&#x1EED; hi&#x1EC7;n t&#x1EA1;i b&#x1EB1;ng to&#xE1;n t&#x1EED; `*`</span>
+        sum <span class="token operator">+=</span> <span class="token operator">*</span>i<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nSum = %d&quot;</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Nhap so luong phan tu<span class="token operator">:</span> <span class="token number">5</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
+Nhap a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span>
+
+Gia tri a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
+Gia tri a<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">5</span>
+Sum <span class="token operator">=</span> <span class="token number">15</span>
+</pre><p>&#x2192; C&#xE1;ch &#x111;&#x1EC3; duy&#x1EC7;t m&#x1EA3;ng c&#x1EF1;c ng&#x1EA7;u &#x1F603;</p>
+<h3 class="mume-header" id="3-con-tr%E1%BB%8F-v%C3%A0-h%C3%A0m-trong-c">3. CON TR&#x1ECE; V&#xC0; H&#xC0;M TRONG C</h3>
+
+<p><strong>M&#x1ED1;i li&#xEA;n h&#x1EC7; gi&#x1EEF;a con tr&#x1ECF; v&#xE0; h&#xE0;m</strong><br>
+Ngu&#x1ED3;n: <a href="https://nguyenvanhieu.vn/con-tro-va-ham-trong-c/">https://nguyenvanhieu.vn/con-tro-va-ham-trong-c/</a></p>
+<p><img src="./../images/pointer3.png" alt="pointer3"></p>
+<p><strong>Tham chi&#x1EBF;u trong c</strong><br>
+L&#x1B0;u &#xFD;: Tham chi&#x1EBF;u l&#xE0; kh&#xE1;i ni&#x1EC7;m ch&#x1EC9; c&#xF3; trong C++. V&#x1EDB;i C, c&#xE1;ch t&#x1B0;&#x1A1;ng t&#x1EF1; &#x111;&#x1EC3; truy&#x1EC1;n tham chi&#x1EBF;u l&#xE0; s&#x1EED; d&#x1EE5;ng truy&#x1EC1;n con tr&#x1ECF;. V&#x1EDB;i tham tr&#x1ECB; (truy&#x1EC1;n gi&#xE1; tr&#x1ECB;) th&#xEC; C v&#xE0; C++ l&#xE0; gi&#x1ED1;ng nhau.</p>
+<p>H&#xE0;m ho&#xE1;n v&#x1ECB; 2 s&#x1ED1; nguy&#xEA;n:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham con, truoc khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> tmp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+    b <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham con, sau khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham main, truoc khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham main, sau khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Ham main<span class="token punctuation">,</span> truoc khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span>
+Ham con<span class="token punctuation">,</span> truoc khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span>
+Ham con<span class="token punctuation">,</span> sau khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">5</span>
+Ham main<span class="token punctuation">,</span> sau khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span>
+</pre><p>&#x2192; H&#xE0;m con kh&#xF4;ng thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n a v&#xE0; b trong h&#xE0;m <code>main()</code>.<br>
+&#x2192; &#x110;ang truy&#x1EC1;n b&#x1EDF;i tham tr&#x1ECB; &#x2013; ngh&#x129;a l&#xE0; khi h&#xE0;m <code>swap()</code> &#x111;&#x1B0;&#x1EE3;c g&#x1ECD;i th&#xEC; 2 tham s&#x1ED1; &#x111;&#xF3; s&#x1EBD; &#x111;&#x1B0;&#x1EE3;c h&#xE0;m n&#xE0;y sao ch&#xE9;p sang 2 v&#xF9;ng nh&#x1EDB; m&#x1EDB;i, m&#x1ECD;i thay &#x111;&#x1ED5;i &#x111;&#x1B0;&#x1EE3;c th&#x1EF1;c hi&#x1EC7;n tr&#xEA;n b&#x1EA3;n sao n&#xE0;y.</p>
+<p><em>B&#xE2;y gi&#x1EDD;, ta h&#xE3;y th&#x1EED; truy&#x1EC1;n con tr&#x1ECF; nh&#x1B0; sau:</em></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+
+<span class="token comment">// Tham s&#x1ED1; &#x111;&#x1EA7;u v&#xE0;o l&#xE0; 2 bi&#x1EBF;n con tr&#x1ECF; ki&#x1EC3;u int</span>
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// d&#xF9;ng * &#x111;&#x1EC3; l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham con, truoc khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>a <span class="token punctuation">,</span> <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// d&#xF9;ng * &#x111;&#x1EC3; l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; a &#x111;ang tr&#x1ECF; t&#x1EDB;i v&#xE0; g&#xE1;n cho bi&#x1EBF;n `tmp`</span>
+    <span class="token keyword">int</span> tmp <span class="token operator">=</span> <span class="token operator">*</span>a<span class="token punctuation">;</span>
+    <span class="token comment">// s&#x1EED;a gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; a &#x111;ang tr&#x1ECF; t&#x1EDB;i,</span>
+    <span class="token comment">// b&#x1EB1;ng gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; b &#x111;ang tr&#x1ECF; t&#x1EDB;i</span>
+    <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+    <span class="token comment">// s&#x1EED;a gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; a &#x111;ang tr&#x1ECF; t&#x1EDB;i,</span>
+    <span class="token comment">// b&#x1EB1;ng gi&#xE1; tr&#x1ECB; c&#x1EE7;a c&#x1EE7;a bi&#x1EBF;n con tr&#x1ECF; a &#x111;ang tr&#x1ECF; t&#x1EDB;i, &#x111;ang &#x111;&#x1B0;&#x1EE3;c l&#x1B0;u trong `tmp`</span>
+    <span class="token operator">*</span>b <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+    <span class="token comment">// d&#xF9;ng * &#x111;&#x1EC3; l&#x1EA5;y gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham con, sau khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>a <span class="token punctuation">,</span> <span class="token operator">*</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham main, truoc khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Do tham s&#x1ED1; h&#xE0;m l&#xE0; 2 con tr&#x1ECF;, ta c&#x1EA7;n truy&#x1EC1;n v&#xE0;o &#x111;&#x1ECB;a ch&#x1EC9;</span>
+    <span class="token comment">// D&#xF9;ng &amp; &#x111;&#x1EC3; l&#x1EA5;y &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n.</span>
+    <span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Ham main, sau khi goi ham hoan vi, a = %d, b = %d\n&quot;</span><span class="token punctuation">,</span> a <span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Ham main<span class="token punctuation">,</span> truoc khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span>
+Ham con<span class="token punctuation">,</span> truoc khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">7</span>
+Ham con<span class="token punctuation">,</span> sau khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">5</span>
+Ham main<span class="token punctuation">,</span> sau khi goi ham hoan vi<span class="token punctuation">,</span> a <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">5</span>
+</pre><p>&#x2192; Khi ta c&#xF3; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a bi&#x1EBF;n (con tr&#x1ECF; l&#x1B0;u) th&#xEC; ta c&#xF3; th&#x1EC3; thay &#x111;&#x1ED5;i gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n m&#xE0; con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i. &#x110;&#xF3; ch&#xED;nh l&#xE0; c&#xE1;ch truy&#x1EC1;n con tr&#x1ECF; trong C.</p>
+<p><strong>Truy&#x1EC1;n con tr&#x1ECF; v&#xE0;o h&#xE0;m trong C</strong></p>
+<ul>
+<li>B&#x1EA1;n &#x111;&#xE3; qu&#xE1; quen thu&#x1ED9;c v&#x1EDB;i vi&#x1EC7;c truy&#x1EC1;n gi&#xE1; tr&#x1ECB; v&#xE0;o h&#xE0;m &#x2013; truy&#x1EC1;n tham tr&#x1ECB; nh&#x1B0; &#x111;o&#x1EA1;n code &#x111;&#x1EA7;u ti&#xEA;n c&#x1EE7;a b&#xE0;i.</li>
+<li>&#x1EDE; ph&#x1EA7;n n&#xE0;y, ch&#xFA;ng ta s&#x1EBD; xem x&#xE9;t c&#xE1;ch truy&#x1EC1;n con tr&#x1ECF; v&#xE0;o h&#xE0;m trong C nh&#x1B0; th&#x1EBF; n&#xE0;o.</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+
+<span class="token keyword">void</span> <span class="token function">addOne</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>ptr<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// T&#x103;ng gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n n&#x1A1;i con tr&#x1ECF; &#x111;ang tr&#x1ECF; &#x111;&#x1EBF;n l&#xEA;n 1 &#x111;&#x1A1;n v&#x1ECB;.</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>ptr<span class="token punctuation">)</span><span class="token operator">++</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>p<span class="token punctuation">,</span> i <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+    <span class="token function">addOne</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">*</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 11</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>Trong v&#xED; d&#x1EE5; tr&#xEA;n:</p>
+<ul>
+<li>Ch&#xFA;ng ta truy&#x1EC1;n con tr&#x1ECF; <code>p</code> v&#xE0;o h&#xE0;m <code>addOne()</code>, h&#xE0;m n&#xE0;y c&#xF3; ch&#x1EE9;c n&#x103;ng t&#x103;ng gi&#xE1; tr&#x1ECB; c&#x1EE7;a bi&#x1EBF;n n&#x1A1;i con tr&#x1ECF; &#x111;ang tr&#x1ECF; t&#x1EDB;i.</li>
+<li>V&#xEC; ta truy&#x1EC1;n v&#xE0;o bi&#x1EBF;n con tr&#x1ECF; n&#xEA;n gi&#xE1; tr&#x1ECB; c&#x1EE7;a <code>p</code> trong h&#xE0;m <code>main()</code>c&#x169;ng s&#x1EBD; b&#x1ECB; thay &#x111;&#x1ED5;i.</li>
+</ul>
+<h3 class="mume-header" id="4-c%E1%BA%A5p-ph%C3%A1t-b%E1%BB%99-nh%E1%BB%9B-%C4%91%E1%BB%99ng-trong-c">4. C&#x1EA4;P PH&#xC1;T B&#x1ED8; NH&#x1EDA; &#x110;&#x1ED8;NG TRONG C</h3>
+
+<p><strong>T&#x1EA1;i sao c&#x1EA7;n c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng?</strong><br>
+B&#x1EA1;n &#x111;&#xE3; bi&#x1EBF;t:</p>
+<ul>
+<li>M&#x1EA3;ng l&#xE0; m&#x1ED9;t t&#x1EAD;p h&#x1EE3;p c&#x1EE7;a c&#xE1;c ph&#x1EA7;n t&#x1EED; n&#x1EB1;m li&#xEA;n ti&#x1EBF;p nhau tr&#xEA;n b&#x1ED9; nh&#x1EDB; v&#xE0; c&#xF3; c&#xF9;ng ki&#x1EC3;u d&#x1EEF; li&#x1EC7;u.</li>
+<li>Khi khai b&#xE1;o m&#x1EA3;ng, b&#x1EA1;n ph&#x1EA3;i ch&#x1EC9; &#x111;&#x1ECB;nh r&#xF5; k&#xED;ch th&#x1B0;&#x1EDB;c t&#x1ED1;i &#x111;a (s&#x1ED1; l&#x1B0;&#x1EE3;ng ph&#x1EA7;n t&#x1EED; t&#x1ED1;i &#x111;a). V&#xE0; sau khi khai b&#xE1;o, b&#x1EA1;n kh&#xF4;ng th&#x1EC3; thay &#x111;&#x1ED5;i k&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a m&#x1EA3;ng<br>
+&#x2192; <strong>C&#x1EA5;p ph&#xE1;t t&#x129;nh</strong>.</li>
+</ul>
+<p>&#x110;&#xF4;i khi k&#xED;ch th&#x1B0;&#x1EDB;c m&#x1EA3;ng c&#x1EE7;a b&#x1EA1;n khai b&#xE1;o c&#xF3; th&#x1EC3; thi&#x1EBF;u, c&#x169;ng c&#xF3; th&#x1EC3; d&#x1B0; th&#x1EEB;a g&#xE2;y l&#xE3;ng ph&#xED; b&#x1ED9; nh&#x1EDB;.<br>
+D&#x1B0;&#x1EDB;i &#x111;&#xE2;y l&#xE0; b&#x1EA3;ng so s&#xE1;nh gi&#x1EEF;a c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng v&#xE0; t&#x129;nh:</p>
+<table>
+<thead>
+<tr>
+<th>C&#x1EA5;p ph&#xE1;t t&#x129;nh</th>
+<th>C&#x1EA5;p ph&#xE1;t &#x111;&#x1ED9;ng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B&#x1ED9; nh&#x1EDB; &#x111;&#x1B0;&#x1EE3;c c&#x1EA5;p ph&#xE1;t tr&#x1B0;&#x1EDB;c khi ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh (trong qu&#xE1; tr&#xEC;nh bi&#xEA;n d&#x1ECB;ch)</td>
+<td>B&#x1ED9; nh&#x1EDB; &#x111;&#x1B0;&#x1EE3;c c&#x1EA5;p ph&#xE1;t trong qu&#xE1; tr&#xEC;nh ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh.</td>
+</tr>
+<tr>
+<td>Kh&#xF4;ng th&#x1EC3; c&#x1EA5;p ph&#xE1;t hay ph&#xE2;n b&#x1ED5; l&#x1EA1;i b&#x1ED9; nh&#x1EDB; trong khi ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh</td>
+<td>Cho ph&#xE9;p qu&#x1EA3;n l&#xFD;, ph&#xE2;n b&#x1ED5; hay gi&#x1EA3;i ph&#xF3;ng b&#x1ED9; nh&#x1EDB; trong khi ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh</td>
+</tr>
+<tr>
+<td>V&#xF9;ng nh&#x1EDB; &#x111;&#x1B0;&#x1EE3;c c&#x1EA5;p ph&#xE1;t v&#xE0; t&#x1ED3;n t&#x1EA1;i cho &#x111;&#x1EBF;n khi k&#x1EBF;t th&#xFA;c ch&#x1B0;&#x1A1;ng tr&#xEC;nh</td>
+<td>Ch&#x1EC9; c&#x1EA5;p ph&#xE1;t v&#xF9;ng nh&#x1EDB; khi c&#x1EA7;n s&#x1EED; d&#x1EE5;ng t&#x1EDB;i</td>
+</tr>
+<tr>
+<td>Ch&#x1B0;&#x1A1;ng tr&#xEC;nh ch&#x1EA1;y nhanh h&#x1A1;n so v&#x1EDB;i c&#x1EA5;p ph&#xE1;t &#x111;&#x1ED9;ng</td>
+<td>Ch&#x1B0;&#x1A1;ng tr&#xEC;nh ch&#x1EA1;y ch&#x1EAD;m h&#x1A1;n so v&#x1EDB;i c&#x1EA5;p ph&#xE1;t t&#x129;nh</td>
+</tr>
+<tr>
+<td>T&#x1ED1;n nhi&#x1EC1;u kh&#xF4;ng gian b&#x1ED9; nh&#x1EDB; h&#x1A1;n</td>
+<td>Ti&#x1EBF;t ki&#x1EC7;m &#x111;&#x1B0;&#x1EE3;c kh&#xF4;ng gian b&#x1ED9; nh&#x1EDB; s&#x1EED; d&#x1EE5;ng</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>&#x1AF;u &#x111;i&#x1EC3;m</strong> ch&#xED;nh c&#x1EE7;a vi&#x1EC7;c s&#x1EED; d&#x1EE5;ng c&#x1EA5;p ph&#xE1;t &#x111;&#x1ED9;ng l&#xE0; gi&#xFA;p ta <strong>ti&#x1EBF;t ki&#x1EC7;m</strong> &#x111;&#x1B0;&#x1EE3;c kh&#xF4;ng gian b&#x1ED9; nh&#x1EDB; m&#xE0; ch&#x1B0;&#x1A1;ng tr&#xEC;nh s&#x1EED; d&#x1EE5;ng. B&#x1EDF;i v&#xEC; ch&#xFA;ng ta s&#x1EBD; ch&#x1EC9; <strong>c&#x1EA5;p ph&#xE1;t</strong> khi c&#x1EA7;n d&#xF9;ng v&#xE0; c&#xF3; th&#x1EC3; <strong>gi&#x1EA3;i ph&#xF3;ng</strong> v&#xF9;ng nh&#x1EDB; &#x111;&#xF3; ngay sau khi s&#x1EED; d&#x1EE5;ng xong.</li>
+<li><strong>Nh&#x1B0;&#x1EE3;c &#x111;i&#x1EC3;m</strong> ch&#xED;nh c&#x1EE7;a c&#x1EA5;p ph&#xE1;t &#x111;&#x1ED9;ng l&#xE0; b&#x1EA1;n ph&#x1EA3;i t&#x1EF1; qu&#x1EA3;n l&#xFD; v&#xF9;ng nh&#x1EDB; m&#xE0; b&#x1EA1;n c&#x1EA5;p ph&#xE1;t. N&#x1EBF;u b&#x1EA1;n c&#x1EE9; c&#x1EA5;p ph&#xE1;t m&#xE0; qu&#xEA;n gi&#x1EA3;i ph&#xF3;ng b&#x1ED9; nh&#x1EDB; th&#xEC; ch&#x1B0;&#x1A1;ng tr&#xEC;nh c&#x1EE7;a b&#x1EA1;n s&#x1EBD; ti&#xEA;u th&#x1EE5; h&#x1EBF;t t&#xE0;i nguy&#xEA;n c&#x1EE7;a m&#xE1;y t&#xED;nh d&#x1EAB;n &#x111;&#x1EBF;n t&#xEC;nh tr&#x1EA1;ng <strong>tr&#xE0;n b&#x1ED9; nh&#x1EDB;</strong> (memory leak).</li>
+</ul>
+<p><strong>C&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng trong C</strong></p>
+<ul>
+<li>S&#x1EED; d&#x1EE5;ng h&#xE0;m <code>malloc()</code> ho&#x1EB7;c h&#xE0;m <code>calloc()</code> &#x111;&#x1EC3; c&#x1EA5;p ph&#xE1;t &#x111;&#x1ED9;ng.</li>
+<li>S&#x1EED; d&#x1EE5;ng h&#xE0;m <code>free()</code> &#x111;&#x1EC3; gi&#x1EA3;i ph&#xF3;ng b&#x1ED9; nh&#x1EDB; &#x111;&#xE3; c&#x1EA5;p ph&#xE1;t khi kh&#xF4;ng c&#x1EA7;n s&#x1EED; d&#x1EE5;ng.</li>
+<li>S&#x1EED; d&#x1EE5;ng <code>realloc()</code> &#x111;&#x1EC3; thay &#x111;&#x1ED5;i (ph&#xE2;n b&#x1ED5; l&#x1EA1;i) k&#xED;ch th&#x1B0;&#x1EDB;c b&#x1ED9; nh&#x1EDB; &#x111;&#xE3; c&#x1EA5;p ph&#xE1;t trong khi ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh.</li>
+</ul>
+<ol>
+<li><strong>S&#x1EED; d&#x1EE5;ng h&#xE0;m malloc()</strong></li>
+</ol>
+<ul>
+<li>T&#x1EEB; <code>malloc</code> l&#xE0; &#x111;&#x1EA1;i di&#x1EC7;n cho c&#x1EE5;m t&#x1EEB; <code>memory allocation</code> (d&#x1ECB;ch: c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB;).</li>
+<li>H&#xE0;m <code>malloc()</code> th&#x1EF1;c hi&#x1EC7;n c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; b&#x1EB1;ng c&#xE1;ch ch&#x1EC9; &#x111;&#x1ECB;nh s&#x1ED1; <code>byte</code> c&#x1EA7;n c&#x1EA5;p ph&#xE1;t. H&#xE0;m n&#xE0;y tr&#x1EA3; v&#x1EC1; con tr&#x1ECF; ki&#x1EC3;u <code>void</code> cho ph&#xE9;p ch&#xFA;ng ta c&#xF3; th&#x1EC3; &#xE9;p ki&#x1EC3;u v&#x1EC1; b&#x1EA5;t c&#x1EE9; ki&#x1EC3;u d&#x1EEF; li&#x1EC7;u n&#xE0;o.</li>
+<li>C&#xFA; ph&#xE1;p c&#x1EE7;a h&#xE0;m <code>malloc()</code>:<pre data-role="codeBlock" data-info="c" class="language-c">ptr <span class="token operator">=</span> <span class="token punctuation">(</span>castType<span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>V&#xED; d&#x1EE5;:<pre data-role="codeBlock" data-info="c" class="language-c">ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token number">100</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//c&#x1EA5;p ph&#xE1;t cho vi&#x1EC7;c l&#x1B0;u tr&#x1EEF; 100 s&#x1ED1; nguy&#xEA;n</span>
+<span class="token comment">//khi &#x111;&#xF3; l&#x1EC7;nh d&#x1B0;&#x1EDB;i &#x111;&#xE2;y th&#x1EF1;c hi&#x1EC7;n c&#x1EA5;p ph&#xE1;t 400 bytes</span>
+<span class="token comment">//con tr&#x1ECF; ptr s&#x1EBD; c&#xF3; gi&#xE1; tr&#x1ECB; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a byte d&#x1EEF; li&#x1EC7;u &#x111;&#x1EA7;u ti&#xEA;n trong kh&#x1ED1;i b&#x1ED9; nh&#x1EDB; v&#x1EEB;a c&#x1EA5;p ph&#xE1;t</span>
+</pre></li>
+</ul>
+<ol start="2">
+<li><strong>S&#x1EED; d&#x1EE5;ng h&#xE0;m calloc()</strong></li>
+</ol>
+<ul>
+<li>
+<p>T&#x1EEB; <code>calloc</code> &#x111;&#x1EA1;i di&#x1EC7;n cho c&#x1EE5;m t&#x1EEB; <code>contiguous allocation</code> (d&#x1ECB;ch: c&#x1EA5;p ph&#xE1;t li&#xEA;n t&#x1EE5;c).</p>
+</li>
+<li>
+<p>H&#xE0;m <code>malloc()</code> khi c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; th&#xEC; v&#xF9;ng nh&#x1EDB; c&#x1EA5;p ph&#xE1;t &#x111;&#xF3; kh&#xF4;ng &#x111;&#x1B0;&#x1EE3;c kh&#x1EDF;i t&#x1EA1;o gi&#xE1; tr&#x1ECB; ban &#x111;&#x1EA7;u. Trong khi &#x111;&#xF3;, h&#xE0;m calloc() th&#x1EF1;c hi&#x1EC7;n c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; v&#xE0; kh&#x1EDF;i t&#x1EA1;o t&#x1EA5;t c&#x1EA3; c&#xE1;c &#xF4; nh&#x1EDB; c&#xF3; <strong>gi&#xE1; tr&#x1ECB; b&#x1EB1;ng 0</strong>.</p>
+</li>
+<li>
+<p>H&#xE0;m <code>calloc()</code> nh&#x1EAD;n v&#xE0;o 2 tham s&#x1ED1; l&#xE0; s&#x1ED1; &#xF4; nh&#x1EDB; mu&#x1ED1;n kh&#x1EDF;i t&#x1EA1;o v&#xE0; k&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a 1 &#xF4; nh&#x1EDB;.</p>
+</li>
+<li>
+<p>C&#xFA; ph&#xE1;p c&#x1EE7;a h&#xE0;m <code>calloc()</code>:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">  ptr <span class="token operator">=</span> <span class="token punctuation">(</span>castType<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">calloc</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>V&#xED; d&#x1EE5;:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">calloc</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>H&#xE0;m <code>calloc()</code> th&#x1EF1;c hi&#x1EC7;n c&#x1EA5;p ph&#xE1;t 100 &#xF4; nh&#x1EDB; li&#xEA;n ti&#x1EBF;p v&#xE0; m&#x1ED7;i &#xF4; nh&#x1EDB; c&#xF3; k&#xED;ch th&#x1B0;&#x1EDB;c l&#xE0; s&#x1ED1; byte c&#x1EE7;a ki&#x1EC3;u int. H&#xE0;m n&#xE0;y c&#x169;ng tr&#x1EA3; v&#x1EC1; con tr&#x1ECF; ch&#x1EE9;a gi&#xE1; tr&#x1ECB; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a byte &#x111;&#x1EA7;u ti&#xEA;n trong kh&#x1ED1;i b&#x1ED9; nh&#x1EDB; v&#x1EEB;a c&#x1EA5;p ph&#xE1;t.</p>
+</li>
+</ul>
+<ol start="3">
+<li><strong>S&#x1EED; d&#x1EE5;ng h&#xE0;m <code>free()</code></strong></li>
+</ol>
+<ul>
+<li>Vi&#x1EC7;c c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng trong C d&#xF9; s&#x1EED; d&#x1EE5;ng malloc() hay calloc() th&#xEC; ch&#xFA;ng c&#x169;ng &#x111;&#x1EC1;u kh&#xF4;ng th&#x1EC3; t&#x1EF1; gi&#x1EA3;i ph&#xF3;ng b&#x1ED9; nh&#x1EDB;. B&#x1EA1;n c&#x1EA7;n s&#x1EED; d&#x1EE5;ng h&#xE0;m free() &#x111;&#x1EC3; gi&#x1EA3;i ph&#xF3;ng v&#xF9;ng nh&#x1EDB;.</li>
+<li>C&#xFA; ph&#xE1;p:</li>
+</ul>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token function">free</span><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ptr l&#xE0; con tr&#x1ECF;</span>
+</pre><ol start="4">
+<li><strong>V&#xED; d&#x1EE5; s&#x1EED; d&#x1EE5;ng malloc() v&#xE0; free()</strong></li>
+</ol>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token comment">// Th&#x1B0; vi&#x1EC7;n n&#xE0;y c&#x1EA7;n &#x111;&#x1EC3; c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap so luong phan tu: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>n <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// N&#x1EBF;u kh&#xF4;ng th&#x1EC3; c&#x1EA5;p ph&#xE1;t,</span>
+    <span class="token comment">// h&#xE0;m malloc s&#x1EBD; tr&#x1EA3; v&#x1EC1; con tr&#x1ECF; NULL</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ptr <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Co loi! khong the cap phat bo nho.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap cac gia tri: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> ptr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sum <span class="token operator">+=</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Tong = %d&quot;</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Gi&#x1EA3;i ph&#xF3;ng v&#xF9;ng nh&#x1EDB; cho con tr&#x1ECF;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</pre><ol start="5">
+<li><strong>V&#xED; d&#x1EE5; s&#x1EED; d&#x1EE5;ng calloc() v&#xE0; free()</strong></li>
+</ol>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token comment">// Th&#x1B0; vi&#x1EC7;n n&#xE0;y c&#x1EA7;n &#x111;&#x1EC3; c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap so luong phan tu: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">calloc</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// N&#x1EBF;u kh&#xF4;ng th&#x1EC3; c&#x1EA5;p ph&#xE1;t,</span>
+    <span class="token comment">// h&#xE0;m calloc s&#x1EBD; tr&#x1EA3; v&#x1EC1; con tr&#x1ECF; NULL</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>ptr <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Co loi! khong the cap phat bo nho.&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap cac gia tri: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> ptr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sum <span class="token operator">+=</span> <span class="token operator">*</span><span class="token punctuation">(</span>ptr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Tong = %d&quot;</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Gi&#x1EA3;i ph&#xF3;ng v&#xF9;ng nh&#x1EDB; cho con tr&#x1ECF;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><ol start="6">
+<li><strong>S&#x1EED; d&#x1EE5;ng h&#xE0;m realloc()</strong></li>
+</ol>
+<ul>
+<li>
+<p>N&#x1EBF;u vi&#x1EC7;c c&#x1EA5;p ph&#xE1;t b&#x1ED9; nh&#x1EDB; &#x111;&#x1ED9;ng kh&#xF4;ng &#x111;&#x1EE7; ho&#x1EB7;c c&#x1EA7;n nhi&#x1EC1;u h&#x1A1;n m&#x1EE9;c &#x111;&#xE3; c&#x1EA5;p ph&#xE1;t, b&#x1EA1;n c&#xF3; th&#x1EC3; thay &#x111;&#x1ED5;i k&#xED;ch th&#x1B0;&#x1EDB;c c&#x1EE7;a b&#x1ED9; nh&#x1EDB; &#x111;&#xE3; &#x111;&#x1B0;&#x1EE3;c c&#x1EA5;p ph&#xE1;t tr&#x1B0;&#x1EDB;c &#x111;&#xF3; b&#x1EB1;ng c&#xE1;ch s&#x1EED; d&#x1EE5;ng h&#xE0;m realloc().</p>
+</li>
+<li>
+<p>C&#xFA; ph&#xE1;p c&#x1EE7;a realloc():</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">ptr <span class="token operator">=</span> <span class="token function">realloc</span><span class="token punctuation">(</span>ptr<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre></li>
+<li>
+<p>H&#xE0;m n&#xE0;y th&#x1EF1;c hi&#x1EC7;n c&#x1EA5;p ph&#xE1;t v&#xF9;ng nh&#x1EDB; m&#x1EDB;i cho con tr&#x1ECF; ptr. V&#xF9;ng nh&#x1EDB; m&#x1EDB;i &#x111;&#xF3; s&#x1EBD; c&#xF3; k&#xED;ch th&#x1B0;&#x1EDB;c m&#x1EDB;i l&#xE0; n bytes.</p>
+</li>
+<li>
+<p>H&#xE0;m n&#xE0;y c&#x169;ng tr&#x1EA3; v&#x1EC1; con tr&#x1ECF; ch&#x1EE9;a gi&#xE1; tr&#x1ECB; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; c&#x1EE7;a byte &#x111;&#x1EA7;u ti&#xEA;n trong v&#xF9;ng nh&#x1EDB; m&#x1EDB;i. H&#xE0;m n&#xE0;y s&#x1EBD; c&#x1ED1; g&#x1EAF;ng m&#x1EDF; r&#x1ED9;ng s&#x1ED1; &#xF4; nh&#x1EDB; ra ph&#xED;a sau n&#x1EBF;u c&#xF3; th&#x1EC3; &#x111;&#x1EC3; gi&#x1EEF; nguy&#xEA;n gi&#xE1; tr&#x1ECB; c&#x1EE7;a con tr&#x1ECF; ban &#x111;&#x1EA7;u. Trong tr&#x1B0;&#x1EDD;ng h&#x1EE3;p ph&#x1EA3;i &#x111;&#x1ED5;i sang m&#x1ED9;t v&#xF9;ng nh&#x1EDB; kh&#xE1;c, h&#xE0;m <code>realloc()</code> c&#x169;ng s&#x1EBD; mang theo gi&#xE1; tr&#x1ECB; &#x111;&#xE3; c&#xF3; &#x1EDF; v&#xF9;ng nh&#x1EDB; c&#x169; sang v&#xF9;ng nh&#x1EDB; m&#x1EDB;i v&#xE0; gi&#x1EA3;i ph&#xF3;ng lu&#xF4;n v&#xF9;ng nh&#x1EDB; c&#x169;. Trong tr&#x1B0;&#x1EDD;ng h&#x1EE3;p kh&#xF4;ng th&#x1EC3;, n&#xF3; s&#x1EBD; tr&#x1EA3; v&#x1EC1; con tr&#x1ECF; <code>NULL</code> gi&#x1ED1;ng nh&#x1B0; <code>malloc()</code> v&#xE0; <code>calloc()</code>.</p>
+</li>
+</ul>
+<ol start="7">
+<li><strong>V&#xED; d&#x1EE5; s&#x1EED; d&#x1EE5;ng h&#xE0;m realloc()</strong></li>
+</ol>
+<ul>
+<li>
+<p>V&#xED; d&#x1EE5; d&#x1B0;&#x1EDB;i &#x111;&#xE2;y th&#xEC; vi&#x1EC7;c c&#x1EA5;p ph&#xE1;t kh&#xF4;ng ph&#x1EA3;i di chuy&#x1EC3;n sang v&#xF9;ng nh&#x1EDB; kh&#xE1;c m&#xE0; ch&#x1EC9; m&#x1EDF; r&#x1ED9;ng ra ph&#xED;a sau.</p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">int</span> <span class="token operator">*</span>ptr<span class="token punctuation">,</span> i <span class="token punctuation">,</span> n1<span class="token punctuation">,</span> n2<span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap so luong phan tu: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">malloc</span><span class="token punctuation">(</span>n1 <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Dia chi cua vung nho vua cap phat: %u&quot;</span><span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nNhap lai so luong phan tu: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// ph&#xE2;n b&#x1ED5; l&#x1EA1;i v&#xF9;ng nh&#x1EDB;</span>
+  ptr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">realloc</span><span class="token punctuation">(</span>ptr<span class="token punctuation">,</span> n2 <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Dia chi cua vung nho duoc cap phat lai: %u&quot;</span><span class="token punctuation">,</span> ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// gi&#x1EA3;i ph&#xF3;ng</span>
+  <span class="token function">free</span><span class="token punctuation">(</span>ptr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Nhap so luong phan tu<span class="token operator">:</span> <span class="token number">2</span>
+Dia chi cua vung nho vua cap phat<span class="token operator">:</span> <span class="token number">1993360</span>
+Nhap lai so luong phan tu<span class="token operator">:</span> <span class="token number">100</span>
+Dia chi cua vung nho duoc cap phat lai<span class="token operator">:</span> <span class="token number">1993360</span>
+</pre></li>
+</ul>
+<p><strong>C&#x1EA5;p ph&#xE1;t m&#x1EA3;ng &#x111;&#x1ED9;ng 1 chi&#x1EC1;u</strong></p>
+<pre data-role="codeBlock" data-info="c" class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
+ 
+<span class="token keyword">void</span> <span class="token function">NhapMang</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;arr[%d] = &quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Do gi&#xE1; tr&#x1ECB; con tr&#x1ECF; l&#xE0; &#x111;&#x1ECB;a ch&#x1EC9; r&#x1ED3;i. N&#xEA;n b&#x1EA1;n s&#x1EBD; kh&#xF4;ng th&#x1EA5;y d&#x1EA5;u &amp; quen thu&#x1ED9;c n&#x1EEF;a</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>arr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token keyword">void</span> <span class="token function">XuatMang</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;arr[%d] = %d\n&quot;</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token operator">*</span><span class="token punctuation">(</span>arr <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token keyword">void</span> <span class="token function">ThemPhanTu</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token keyword">int</span> val<span class="token punctuation">,</span> <span class="token keyword">int</span> pos<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Ph&#xE2;n b&#x1ED5; l&#x1EA1;i b&#x1ED9; nh&#x1EDB; &#x111;&#xE3; c&#x1EA5;p ph&#xE1;t cho con tr&#x1ECF;.</span>
+    <span class="token comment">// Ta c&#x1EA7;n th&#xEA;m 1 &#xF4; nh&#x1EDB; cho n&#xF3; =&gt; d&#xF9;ng realloc()</span>
+    a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">realloc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Neu pos &lt;= 0 =&gt; Them vao dau</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// Neu pos &gt;= n =&gt; Them vao cuoi</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&gt;</span> n<span class="token punctuation">)</span> pos <span class="token operator">=</span> n<span class="token punctuation">;</span>
+
+    <span class="token comment">// Dich chuyen mang de tao o trong truoc khi them.</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> n<span class="token punctuation">;</span> i <span class="token operator">&gt;</span> pos<span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token operator">*</span><span class="token punctuation">(</span>a <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token punctuation">(</span>a <span class="token operator">+</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// Chen val tai pos</span>
+    <span class="token operator">*</span><span class="token punctuation">(</span>a <span class="token operator">+</span> pos<span class="token punctuation">)</span> <span class="token operator">=</span> val<span class="token punctuation">;</span>
+    <span class="token comment">// Tang so luong phan tu sau khi chen.</span>
+    <span class="token operator">++</span>n<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">XoaPhanTu</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">&amp;</span>n<span class="token punctuation">,</span> <span class="token keyword">int</span> pos<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">// Mang rong, khong the xoa.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Neu pos &lt;= 0 =&gt; Xoa dau</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// Neu pos &gt;= n =&gt; Xoa cuoi</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&gt;=</span> n<span class="token punctuation">)</span> pos <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// Dich chuyen mang</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> pos<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// C&#x1EA5;p ph&#xE1;t l&#x1EA1;i v&#xF9;ng nh&#x1EDB;, gi&#x1EDD; ta ch&#x1EC9; c&#x1EA7;n n - 1 &#xF4; nh&#x1EDB;</span>
+    a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">realloc</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Giam so luong phan tu sau khi xoa.</span>
+    <span class="token operator">--</span>n<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>arr<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">do</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Nhap so luong n = &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token comment">// c&#x1EA5;p ph&#xE1;t &#x111;&#x1EE7; s&#xE0;i</span>
+    arr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>n <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// arr = (int*) calloc(n, sizeof(int));</span>
+ 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;Khong the cap phat!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token function">NhapMang</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nMang vua nhap la:\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">XuatMang</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n=======THEM PHAN TU======\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> val<span class="token punctuation">,</span> pos<span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nNhap so can them: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nNhap vi tri muon chen: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">ThemPhanTu</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">,</span> val<span class="token punctuation">,</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nMang sau khi them:\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">XuatMang</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\n=======XOA PHAN TU======\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nNhap vi tri muon xoa: &quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">&quot;%d&quot;</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">XoaPhanTu</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">,</span> pos<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">&quot;\nMang sau khi xoa:\n&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">XuatMang</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// gi&#x1EA3;i ph&#xF3;ng</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p>K&#x1EBF;t qu&#x1EA3; ch&#x1EA1;y ch&#x1B0;&#x1A1;ng tr&#xEC;nh:</p>
+<pre data-role="codeBlock" data-info="c" class="language-c">Nhap so luong n <span class="token operator">=</span> <span class="token number">3</span>
+arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+ 
+Mang vua nhap la<span class="token operator">:</span>
+arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+ 
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>THEM PHAN TU<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+ 
+Nhap so can them<span class="token operator">:</span> <span class="token number">4</span>
+ 
+Nhap vi tri muon chen<span class="token operator">:</span> <span class="token number">4</span>
+ 
+Mang sau khi them<span class="token operator">:</span>
+arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+arr<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">4</span>
+ 
+<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>XOA PHAN TU<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span>
+ 
+Nhap vi tri muon xoa<span class="token operator">:</span> <span class="token number">4</span>
+ 
+Mang sau khi xoa<span class="token operator">:</span>
+arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
+arr<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span>
+arr<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">3</span>
+</pre>
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
