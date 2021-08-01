@@ -682,3 +682,416 @@ func applyPointer (pointer *int){
 
 #### 11. Struct
 
+```go
+package main
+import "fmt"
+
+type Student struct {
+  id int
+  name string
+}
+
+func main(){
+  // 1. named
+  st1 := Student {
+    id:123,
+    name: "Ryan", //end by ,
+  }
+
+  fmt.Println(st1.id)
+  fmt.Println(st1.name)
+  //2
+  st2 := Student{ 456, "Robin"}
+  //3
+  var st3 Student = struct {
+    id int
+    naem string
+  }{
+    id: 777,
+    name: "Bill",
+  }
+  // anonymous struct
+  var anomymous = struct {
+    email string
+    age int
+  }{"ryan@gmail.com", 27,}
+
+  // pointer trỏ tới struct
+  pointer := &Student {
+    999,
+    "Robin"
+  }
+  fmt.Println((*pointer).id) //get field id
+  //or short way: fmt.Println(pointer.id)
+  
+  // anonymous fields
+  type NoName struct {
+    string
+    int
+  }
+
+  n := NoName{"abcd", 10}
+}
+```
+
+struct lồng struct - Nested struct
+```go
+type StudentInfo struct {
+  class string
+  email string
+  age int
+}
+
+type Student struct {
+  id int
+  name stirng
+  info StudentInfo
+}
+
+func main(){
+
+  student := Student {
+    id: 123,
+    name: "Ryan",
+    info: StudentInfo {
+      class: "ql091",
+      email: "ryan@gmail.com",
+      age: 27
+    }
+  }
+
+  st2 := Student{
+    456,
+    "Robin",
+    StudentInfo {
+      class: "",
+      email: "",
+      age: 20
+    }
+  }
+
+  //compare 2 struct 
+
+  type struct1 struct {
+    id
+    string
+  }
+
+  s1 := struct1{1, "A"}
+  s2 := struct1{1, "A"}
+
+  if s1 == s2 {
+    fmt.Println("s1 == s2")
+  } else {
+    fmt.Println("s1 != s2")
+  } // s1 == s2
+  
+  //only compare 2 struct when all fields can compare, example type `map` in Golang can't compare
+  //should use named struct
+}
+```
+
+Zero value of struct: is zero value of each field in struct, example `int` --> 0, `string` --> ''
+
+
+#### 12. Method in Golang
+```go
+type Student struct {
+  string
+}
+
+//Define method
+func (s Student) getname() string {
+  return s.name
+}
+
+func main(){
+  student := Student{"Ryan"}
+
+  name := student.getName()
+
+  fmt.Println(name)
+}
+```
+**Cú pháp:**
+```go
+func (t Type) methodName(params) returns {
+  //body code
+}
+// (t Type) => Reciver
+```
+**1. Value Receiver**
+```go
+func (s Student) changeName() string {
+  s.name = "Robin"
+}
+
+func main(){
+  student := Student{"Ryan"}
+  student.changeName()
+  fmt.Println(student.name) // -> "Ryan": not change
+}))
+```
+--> 2 addresses are different
+
+**2. Pointer Receiver**
+```go
+func (s *Student) changeName2() string {
+  s.name = "Robin"
+}
+
+func main() {
+  student := Student{"Ryan"}
+  student.changeName2()
+  fmt.Println(student.name)  // -> "Robin": changed
+}
+```
+**Non struct**
+```go
+type String string
+
+func (s String) append(str string) string {
+  retrun fmt.Sprintf("%s%s", s, str)
+}
+
+func main(){
+  s1 := String("a")
+  newStr := s1.append("b")
+  fmt.Println(newStr) // -> ab
+}
+```
+
+#### 13. Interface
+```go
+package main
+
+//interface & multiple interface
+type Animal interface {
+  speak()
+}
+type Movement interface {
+  move()
+}
+
+type Dog struct {}
+
+func (d Dog) speak() {
+  fmt.Println("woaww woaww")
+}
+
+func (d Dog) move() {
+  fmt.Println("Chay bang 4 chan")
+}
+
+func main(){
+  dog := Dog{}
+
+  var m Movement = dog
+  m.move()
+
+  var a Animal = dog
+  a.speak()
+}
+```
+
+**Embed interface**
+
+```go
+type Movement interface {
+  move()
+}
+
+type Animal interface {
+  speak()
+}
+
+type NextAnimal interface {
+  Movement
+  Animal
+}
+
+func main(){
+  dog := Dog{}
+  var na NextAnimal = dog
+  na.speak()
+  na.move()
+}
+```
+**Empty interface **
+```go
+
+type data struct {
+  index int
+}
+
+func goOut(i interface{}){
+  fmt.Println(i)
+}
+
+func main(){
+  goOut(10) // -> 10
+  goOut(10.1) // -> 10.1
+  d := data{123}
+  goOut(d) // -> {123}
+}
+```
+Empty interface có thể nhận vào bất kì kiểu dữ liệu. VD: hàm fmt.Println
+
+#### 14. Concerency
+>Là khả năng 1 chương trình có thể điều khối nhiều tác vụ trng cùng một khoảng thời gian và trong quá trình điều phối chỉ cho phép 1 tác vụ chạy trong 1 thời điểm
+
+**Cách làm truyền thống:**
+Dowloading --> Buffering --> Rendering
+--> Hiệu suất thấp
+Tại sao cần Concurrency:
+- Tận dụng tối đa CPU (1 core or >= 2 cores)
+- Tăng tính phản hồi của ứng dụng
+  
+**Parallelism là gì?**
+>Là khả năng 1 chương trình có thể thực thi 2 hoặc nhiều tasks trong cùng 1 thời điểm, với điều kiện CPU phải có từ 2 core trở lên
+-> doing lots of things at once
+
+**Thread & Process**
+**Go routines && Channel**
+
+![](../images/go.png)
+
+
+**Defer function**
+> Defer statements delay the execution of the function or method or an anonymous method until the nearby functions returns.
+
+-Multiple defer statements are allowed in the same program and they are executed in LIFO(Last-In, First-Out)
+-Defer statements are generally used to ensure that the files are closed when their need is over, or to close the channel, or to catch the panics in the program.
+Example
+```go
+// Go program to illustrate the
+// concept of the defer statement
+package main
+ 
+import "fmt"
+// Functions
+func mul(a1, a2 int) int {
+    res := a1 * a2
+    fmt.Println("Result: ", res)
+    return 0
+}
+ 
+func show() {
+    fmt.Println("Hello!, GeeksforGeeks")
+}
+// Main function
+func main() {
+ 
+    // Calling mul() function
+    // Here mul function behaves
+    // like a normal function
+    mul(23, 45)
+ 
+    // Calling mul()function
+    // Using defer keyword
+    // Here the mul() function
+    // is defer function
+    defer mul(23, 56)
+ 
+    // Calling show() function
+    show()
+}
+```
+
+```
+Result:  1035
+Hello!, GeeksforGeeks
+Result:  1288
+```
+
+ 
+**Bổ sung kiến thức**
+>Nếu TestType ở trên là một interface bạn có thể sử dụng tính năng `type assertion` để kiểm tra kiểu dữ liệu của một giá trị cho trước:
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    type TestType interface{}
+    var testVal TestType = "Hello World"
+
+    val, ok := testVal.(string)
+    if !ok {
+        fmt.Printf("Lỗi! Không thể chuyển đổi sang string.")
+    }
+    fmt.Printf("val: %v", val)
+
+}
+```
+```go
+Hiển thị:
+val: Hello World
+```
+Lưu ý rắng bạn chỉ có thể sử dụng type assertion với giá trị thuộc kiểu interface.
+
+
+**ENUM**
+```go
+const (
+  red = iota
+  yellow
+  blue
+  green
+)
+
+// red = 0; yellow =1; blue=2; green=3;
+```
+
+**panic**: lỗi không mong muôn trong quá trình thực hiện chương trình.
+VD: Xảy ra khi gọi API, đọc dữ liệu từ file
+Chương trình gặp panic sẽ dừng, nhưng trước khi dừng sẽ gọi thực thi tất cả defer function
+![](../images/panicrecover.png)
+
+
+**Go routine:**
+
+- Default go routine `main`
+
+- Khi go routine `main` kết thúc thì dừng luôn chương trình.
+```go
+go func()
+```
+Sử dụng Wait Group để chờ go routine chạy xong mới dừng chương trình
+```go
+package main
+import {
+  "fmt"
+  "time"
+  "sync"
+}
+
+func main(){
+  var wg = sync.WaitGroup{}
+  wg.Add(1) // wait 1 go routine
+
+  go func(){
+    count("Sheep")
+    wg.Done()
+  }()
+  wg.Wait()
+}
+
+func count(name string){
+  for i:=1; i<=5; i++{
+    fmt.Println(name,i)
+    time.Sleep(time.Second)
+  }
+}
+```
+
+Go routine chạy đồng bộ -> Mutex
+![](../images/mutex.png)
+
+Channel
+![](../images/channel.png)
+
+![](../images/channel1.png)
+
