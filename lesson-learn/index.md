@@ -1,8 +1,8 @@
-## SOME REACT BEST PRACTICES
+## 20 REACT BEST PRACTICES
 
 Table of contents:
 
-- [SOME REACT BEST PRACTICES](#some-react-best-practices)
+- [20 REACT BEST PRACTICES](#20-react-best-practices)
   - [1. Use functional components ](#1-use-functional-components-)
   - [2. Follow common naming conventions ](#2-follow-common-naming-conventions-)
   - [3. Keep your Components small ](#3-keep-your-components-small-)
@@ -21,9 +21,10 @@ Table of contents:
   - [16. Alt Prop ](#16-alt-prop-)
   - [17. Use Object Destructuring For Props ](#17-use-object-destructuring-for-props-)
   - [18. Separating business logic from component logic ](#18-separating-business-logic-from-component-logic-)
-  - [19. Remove Js code from JSX ](#19-remove-js-code-from-jsx-)
+  - [19. Use a testing library ](#19-use-a-testing-library-)
+  - [20. Lazy Loading to improve performance ](#20-lazy-loading-to-improve-performance-)
 
-### 1. Use functional components <a name='functional'></a>
+### 1. Use functional components <a name='1-use-functional-components-'></a>
 
 - Components have Two types: a class component and a functional component.
 - Class components:
@@ -40,7 +41,7 @@ Table of contents:
 - No “this” binding
 - Easy to understand
 
-### 2. Follow common naming conventions <a name='components'></a>
+### 2. Follow common naming conventions <a name='2-follow-common-naming-conventions-'></a>
 
 Use PascalCase in components, interfaces, or type aliases
 
@@ -91,7 +92,7 @@ Good
 />
 ```
 
-### 3. Keep your Components small <a name='components'></a>
+### 3. Keep your Components small <a name='3-keep-your-components-small-'></a>
 - A component should ideally only do one thing and do it well. 
 - If a component is getting too large or doing too many things, consider breaking it up into smaller, more focused components.
 
@@ -116,14 +117,14 @@ Good
 ```
 
 
-### 4. Use Linters <a name='linter'></a>
+### 4. Use Linters <a name='4-use-linters-'></a>
 - A linter tool helps improve code quality.
 - One of the most popular linter tools for JavaScript and React is [ESlint](https://eslint.org/).
 - A linter tool helps with consistency in a code base. When using a tool like ESLint, you can set the rules you want every developer working on the project to follow.
 - The tool observes your code and then notifies you when a rule has been broken.
 - Currently, in most projects, we often combine **Eslint** and **[Prettier](https://prettier.io/)** to help us automatically format code based on predefined rules of eslint.
 
-### 5. Always prefer passing objects <a name='passing-object'></a>
+### 5. Always prefer passing objects <a name='5-always-prefer-passing-objects-'></a>
 
 - is good ways to limit the number of props passed.
 - For example: instead of passing each detail of a Student, you can group them
@@ -140,7 +141,7 @@ Good
 <StudentAccount user={user} />
 ```
 
-### 6. Extract reusable logic into custom hooks <a name='custom-hook'></a>
+### 6. Extract reusable logic into custom hooks <a name='6-extract-reusable-logic-into-custom-hooks-'></a>
 
 > Hooks allow us to reuse stateful logic without changing our component hierarchy.
 
@@ -233,7 +234,7 @@ const ResponsiveView = () => {
 };
 ```
 
-### 7. Implement the useReducer hook earlier <a name='passing-object'></a>
+### 7. Implement the useReducer hook earlier <a name='7-implement-the-usereducer-hook-earlier-'></a>
 
 Issue:
 
@@ -311,7 +312,7 @@ const CustomersMap = () => {
 }
 ```
 
-### 8. Use Ternary Operators <a name='passing-object'></a>
+### 8. Use Ternary Operators <a name='8-use-ternary-operators-'></a>
 
 - Avoid multiple if-else blocks, using **Ternary Operators** for more clean code practice.
 
@@ -336,7 +337,7 @@ return role === ADMIN ? <AdminUser /> : <NormalUser />;
 ```
 
 
-### 9. Take Advantage of Object Literals <a name='passing-object'></a>
+### 9. Take Advantage of Object Literals <a name='9-take-advantage-of-object-literals-'></a>
 
 - Object literals can help make our code more readable.
 - We want to show three types of users based on their roles.
@@ -373,7 +374,7 @@ const Component = components[role];
 return <Componenent />;
 ```
 
-### 10. Write a fragment when a div is not needed <a name='fragments'></a>
+### 10. Write a fragment when a div is not needed <a name='10-write-a-fragment-when-a-div-is-not-needed-'></a>
 
 - Always use Fragment over Div.
 - It keeps the code clean and is also beneficial for performance because one less node is created in the virtual DOM.
@@ -402,7 +403,7 @@ return (
 );
 ```
 
-### 11. Avoid unnecessary rendering by using Memo<a name='use-memo'></a>
+### 11. Avoid unnecessary rendering by using Memo<a name='11-avoid-unnecessary-rendering-by-using-memo'></a>
 
 - `React.PureComponent` and `Memo` can significantly improve the performance of your application. They help us to avoid unnecessary rendering.
 
@@ -444,7 +445,7 @@ const ChildrenComponent = React.memo(({ userName }) => {
 });
 ```
 
-### 12. Remove Js code from JSX <a name='js-jsx'></a>
+### 12. Remove Js code from JSX <a name='12-remove-js-code-from-jsx-'></a>
 
 - Move any JS code out of JSX if that doesn’t serve any purpose of rendering or UI functionality.
 
@@ -486,7 +487,7 @@ return (
 );
 ```
 
-### 13. Import in Order <a name='import-order'></a>
+### 13. Import in Order <a name='13-import-in-order-'></a>
 
 - Always try to import things in a certain order. It improves code readability.
 
@@ -544,7 +545,7 @@ You can config it in `eslintrc.json`
     ]
 ```
 
-### 14. Reserved Prop Naming <a name='passing-object'></a>
+### 14. Reserved Prop Naming <a name='14-reserved-prop-naming-'></a>
 - Don’t use DOM component prop names for passing props between components because others might not expect these names.
 
 Bad
@@ -559,7 +560,7 @@ Good
 <MyComponent variant="fancy" />
 ```
 
-### 15. Underscore in Method Name <a name='passing-object'></a>
+### 15. Underscore in Method Name <a name='15-underscore-in-method-name-'></a>
 Do not use underscores in any internal React method.
 Bad
 ```jsx
@@ -574,7 +575,8 @@ const onClickHandler = () => {
   // do stuff
 }
 ```
-### 16. Alt Prop <a name='passing-object'></a>
+
+### 16. Alt Prop <a name='16-alt-prop-'></a>
 - Always include an alt prop in your `<img >` tags
 - don’t use `picture` or `image` in your alt property. No need to include that.
 
@@ -589,7 +591,7 @@ Good
 <img src="hello.jpg" alt="Me waving hello" />
 ```
 
-### 17. Use Object Destructuring For Props <a name='passing-object'></a>
+### 17. Use Object Destructuring For Props <a name='17-use-object-destructuring-for-props-'></a>
 - Instead of passing the props object, use object destructuring to pass the prop name. 
 - This discards the need to refer to the props object each time you need to use it.
 
@@ -606,7 +608,8 @@ const Button = ({ text }) => {
   return <button>{ text }</button>;
 };
 ```
-### 18. Separating business logic from component logic <a name='passing-object'></a>
+
+### 18. Separating business logic from component logic <a name='18-separating-business-logic-from-component-logic-'></a>
 
 **What is the Separation of Concerns?**
 - It states that logic that performs different actions should not be groupled or combined together.
@@ -701,4 +704,33 @@ export default function Posts(props: { posts: ISinglePost[] }) {
 }
 ```
 
-### 19. Remove Js code from JSX <a name='passing-object'></a>
+### 19. Use a testing library <a name='19-use-a-testing-library-'></a>
+- Testing is an essential part of the development process.
+- Help you catch bugs early and ensure that your code is reliable and maintainable.
+- Some popular options include [Jest](https://jestjs.io/), [Enzyme](https://enzymejs.github.io/enzyme/), and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
+
+### 20. Lazy Loading to improve performance <a name='20-lazy-loading-to-improve-performance-'></a>
+- is an **optimization technique** for websites or web applications
+- when a user visits a web page, instead of loading the entire page, only a portion of it renders. And then, it will delay the remaining webpage until the user scrolls to that portion of the web page.
+- Benefits of lazy loading React component:
+  - Faster initial loading
+  - Better User Experience
+  - Less bandwidth consumption
+  - Preserving system resources
+  - Reduced work for the browser
+
+- `React lazy()` integrated into the core react library itself → easy for us to lazy load react components.
+Example:
+```jsx
+const Artists = React.lazy(() => import('./Artists'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Artists />
+    </div>
+  );
+}
+```
+
+
