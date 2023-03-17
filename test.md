@@ -1,43 +1,43 @@
-## ⓴ TIP FOR WRITING BETTER REACT CODE ✍(◔◡◔)
+## ✍ ⓴ 𝐓𝐈𝐏𝐒 𝐅𝐎𝐑 𝐖𝐑𝐈𝐓𝐈𝐍𝐆 𝐁𝐄𝐓𝐓𝐄𝐑 𝐑𝐄𝐀𝐂𝐓 𝐂𝐎𝐃𝐄 ✍(◔◡◔)
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;React is a library that is widely used in the frontend world at the moment. However, when participating in the real project, if you write code without rules, don't follow the recommended patterns, you will easily encounter the situation that your source code becomes messy, inconsistent, difficult to manage and maintain.
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Therefore, with what I have experienced, along with referencing many different resources in the internet. I will introduce to you 20 tips for writing better React code that I personally find useful.
 
 
 **Table of contents:**
 
-- [⓴ TIP FOR WRITING BETTER REACT CODE ✍(◔◡◔)](#-tip-for-writing-better-react-code-)
-  - [①. Use functional components ](#-use-functional-components-)
-  - [②. Follow common naming conventions ](#-follow-common-naming-conventions-)
-  - [③. Keep your Components small ](#-keep-your-components-small-)
-  - [④. Use Linters ](#-use-linters-)
-  - [⑤. Always prefer passing objects ](#-always-prefer-passing-objects-)
-  - [⑥. Extract reusable logic into custom hooks ](#-extract-reusable-logic-into-custom-hooks-)
-  - [⑦. Implement the useReducer hook earlier ](#-implement-the-usereducer-hook-earlier-)
-  - [⑧. Use Ternary Operators ](#-use-ternary-operators-)
-  - [⑨. Take Advantage of Object Literals ](#-take-advantage-of-object-literals-)
-  - [⑩. Write a fragment when a div is not needed ](#-write-a-fragment-when-a-div-is-not-needed-)
-  - [⑪. Avoid unnecessary rendering by using Memo](#-avoid-unnecessary-rendering-by-using-memo)
-  - [⑫. Remove Js code from JSX ](#-remove-js-code-from-jsx-)
-  - [⑬. Import in Order ](#-import-in-order-)
-  - [⑭. Reserved Prop Naming ](#-reserved-prop-naming-)
-  - [⑮. Underscore in Method Name ](#-underscore-in-method-name-)
-  - [⑯. Alt Prop ](#-alt-prop-)
-  - [⑰. Use Object Destructuring For Props ](#-use-object-destructuring-for-props-)
-  - [⑱. Separating business logic from component logic ](#-separating-business-logic-from-component-logic-)
-  - [⑲. Use a testing library ](#-use-a-testing-library-)
-  - [⑳. Lazy Loading to improve performance ](#-lazy-loading-to-improve-performance-)
-  - [Conclusion](#conclusion)
-  - [REFERENCES](#references)
+- [⓴ TIP FOR WRITING BETTER REACT CODE] (#loom-header-1)
+    - [①. Use functional components](#loom-header-2)
+    - [②. Follow common naming conventions](#loom-header-3)
+    - [③. Keep your Components small](#loom-header-4)
+    - [④. Use Linters](#loom-header-5)
+    - [⑤. Always prefer passing objects](#loom-header-6)
+    - [⑥. Extract reusable logic into custom hooks](#loom-header-7)
+    - [⑦. Implement the useReducer hook earlier](#loom-header-8)
+    - [⑧. Use Ternary Operators](#loom-header-9)
+    - [⑨. Take Advantage of Object Literals](#loom-header-10)
+    - [⑩. Write a fragment when a div is not needed](#loom-header-11)
+    - [⑪. Avoid unnecessary rendering by using Memo](#loom-header-12)
+    - [⑫. Remove Js code from JSX](#loom-header-13)
+    - [⑬. Import in Order](#loom-header-14)
+    - [⑭. Reserved Prop Naming](#loom-header-15)
+    - [⑮. Underscore in Method Name](#loom-header-16)
+    - [⑯. Alt Prop](#loom-header-17)
+    - [⑰. Use Object Destructuring For Props](#loom-header-18)
+    - [⑱. Separating business logic from component logic](#loom-header-19)
+    - [⑲. Use a testing library](#loom-header-20)
+    - [⑳. Lazy Loading to improve performance](#loom-header-21)
+    - [Conclusion](#loom-header-22)
+    - [REFERENCES](#loom-header-23)
 
-### ①. Use functional components <a name='1-use-functional-components-'></a>
+### ①. Use functional components 
 
 - Components have Two types: a **class component** and a **functional component**.
 - Class components:
-  - have internal state and life cycle methods.
-  - "this" binding
+    - have internal state and life cycle methods.
+    - "this" binding
 - Functional components:
-  - hooks
-  - accept props as arguments and return React elements
+    - hooks
+    - accept props as arguments and return React elements
 
 **The advantages of functional components are :**
 
@@ -47,6 +47,7 @@
 - Easy to understand
 
 **Class component:**
+
 ```jsx
 import React, { Component } from "react";
  
@@ -80,6 +81,7 @@ export default ClassComponent;
 ```
 
 **Functional component:**
+
 ```jsx
 import React, { useState } from "react";
  
@@ -102,7 +104,8 @@ const FunctionalComponent=()=>{
 
 export default FunctionalComponent;
 ```
-### ②. Follow common naming conventions <a name='2-follow-common-naming-conventions-'></a>
+
+### ②. Follow common naming conventions 
 
 Use **PascalCase** in components, interfaces, or type aliases
 
@@ -137,14 +140,17 @@ const userTypes = [ ... ]
 
 **Always use camelCase** for prop names or PascalCase if the prop value is a React component.
 
-**Bad**
+**Bad** ❌
+
 ```jsx
 <Component
   UserName="hello"
   phone_number={12345678}
 />
 ```
-**Good**
+
+ **Good** ✅
+
 ```jsx
 <MyComponent
   userName="hello"
@@ -153,17 +159,19 @@ const userTypes = [ ... ]
 />
 ```
 
-### ③. Keep your Components small <a name='3-keep-your-components-small-'></a>
+### ③. Keep your Components small 
+
 - A component should ideally only do one thing and do it well. 
 - If a component is getting too large or doing too many things a→ break it up into smaller.
 
 - Small component helps:
-  - **easily read and understand** the functionality of this component.
-  - **easier to update**.
-  - **re-usability** is also increased.
-  - easy to implement **performance optimizations**.
+    - **easily read and understand** the functionality of this component.
+    - **easier to update**.
+    - **re-usability** is also increased.
+    - easy to implement **performance optimizations**.
 
 **Example:**
+
 - Show list of post on search screen. Each post includes: *name, release date, author, short content, tag list, number of favorites*.
 - With the above information, depending on the complexity of each component, we can divide it in different ways. Here is an example:
 
@@ -177,19 +185,21 @@ const userTypes = [ ... ]
 ```
 
 
-### ④. Use Linters <a name='4-use-linters-'></a>
+### ④. Use Linters 
+
 - A linter tool helps **improve code quality**.
 - One of the most popular linter tools for JavaScript and React is [ESlint](https://eslint.org/).
 - A linter tool helps with **consistency** in a code base. When using a tool like ESLint, you can set the rules you want every developer working on the project to follow.
 - The tool **observes your code** and then **notifies** you when a **rule has been broken**.
 - Currently, in most projects, we often combine Eslint and **[Prettier](https://prettier.io/)** to help us automatically format code based on predefined rules of eslint.
 
-### ⑤. Always prefer passing objects <a name='5-always-prefer-passing-objects-'></a>
+### ⑤. Always prefer passing objects 
 
 - Is good ways to limit the number of props passed.
 - For example: instead of passing each detail of a Student, you can group them:
 
-**Bad**
+**Bad** ❌
+
 ```jsx
 <StudentAccount
     name={user.name}
@@ -198,13 +208,14 @@ const userTypes = [ ... ]
 />
 ```
 
-**Good**
+**Good** ✅
+
 ```jsx
 // Pass objects
 <StudentAccount user={user} />
 ```
 
-### ⑥. Extract reusable logic into custom hooks <a name='6-extract-reusable-logic-into-custom-hooks-'></a>
+### ⑥. Extract reusable logic into custom hooks 
 
 > Hooks allow us to reuse stateful logic without changing our component hierarchy.
 
@@ -297,7 +308,7 @@ const ResponsiveView = () => {
 };
 ```
 
-### ⑦. Implement the useReducer hook earlier <a name='7-implement-the-usereducer-hook-earlier-'></a>
+### ⑦. Implement the useReducer hook earlier 
 
 Issue:
 
@@ -375,11 +386,11 @@ const CustomersMap = () => {
 }
 ```
 
-### ⑧. Use Ternary Operators <a name='8-use-ternary-operators-'></a>
+### ⑧. Use Ternary Operators 
 
 - Avoid multiple if-else blocks, using **Ternary Operators** for more clean code practice.
 
-**Bad**
+**Bad** ❌
 
 ```jsx
 const { role } = user;
@@ -391,7 +402,7 @@ if (role === ADMIN) {
 }
 ```
 
-**Good**
+**Good** ✅
 
 ```jsx
 const { role } = user;
@@ -400,14 +411,16 @@ return role === ADMIN ? <AdminUser /> : <NormalUser />;
 ```
 
 
-### ⑨. Take Advantage of Object Literals <a name='9-take-advantage-of-object-literals-'></a>
+### ⑨. Take Advantage of Object Literals 
 
 - Object literals can help make our code **more readable**.
 
 Example: 
-  - We want to show three types of users based on their roles. You can’t use ternary because the number of options exceeds two.
 
-**Bad**
+  - We want to show three types of users based on their roles. 
+  - You can’t use ternary because the number of options exceeds two.
+
+**Bad** ❌
 
 ```jsx
 const { role } = user;
@@ -422,7 +435,7 @@ switch (role) {
 }
 ```
 
-**Good**
+ **Good** ✅
 
 ```jsx
 const { role } = user;
@@ -438,12 +451,12 @@ const Component = components[role];
 return <Componenent />;
 ```
 
-### ⑩. Write a fragment when a div is not needed <a name='10-write-a-fragment-when-a-div-is-not-needed-'></a>
+### ⑩. Write a fragment when a div is not needed 
 
 - Always **use Fragment over Div**.
 - It keeps the **code clean** and is also beneficial for **performance** because one less node is created in the virtual DOM.
 
-**Bad**
+**Bad** ❌
 
 ```jsx
 return (
@@ -455,7 +468,7 @@ return (
 );
 ```
 
-**Good**
+**Good** ✅
 
 ```jsx
 return (
@@ -467,11 +480,11 @@ return (
 );
 ```
 
-### ⑪. Avoid unnecessary rendering by using Memo<a name='11-avoid-unnecessary-rendering-by-using-memo'></a>
+### ⑪. Avoid unnecessary rendering by using Memo
 
 - `React.PureComponent` and `Memo` can significantly **improve the performance** of your application. They help us to avoid unnecessary rendering.
 
-**Bad**
+**Bad** ❌
 
 ```jsx
 import React, { useState } from "react";
@@ -498,7 +511,7 @@ const ChildrenComponent = ({ userName }) => {
 
 The `ChildrenComponent` will be rendered each time you click on the button while it should render only once → unnecessary rendering
 
-**Good**
+**Good** ✅
 
 ```jsx
 import React, { useState } from "react";
@@ -509,11 +522,11 @@ const ChildrenComponent = React.memo(({ userName }) => {
 });
 ```
 
-### ⑫. Remove Js code from JSX <a name='12-remove-js-code-from-jsx-'></a>
+### ⑫. Remove Js code from JSX 
 
 - Move any JS code out of JSX if that doesn’t serve any purpose of rendering or UI functionality.
 
-**Bad**
+**Bad** ❌
 
 ```jsx
 return (
@@ -532,7 +545,7 @@ return (
 );
 ```
 
-**Good**
+**Good** ✅
 
 ```jsx
 const onClickHandler = (event) => {
@@ -551,11 +564,11 @@ return (
 );
 ```
 
-### ⑬. Import in Order <a name='13-import-in-order-'></a>
+### ⑬. Import in Order 
 
 - Always try to **import** things in a **certain order**. It improves code **readability**.
 
-**Bad**
+**Bad** ❌
 
 ```jsx
 import React from "react";
@@ -573,7 +586,7 @@ The rule of thumb is to keep the import order like this:
 
 So the example above becomes:
 
-**Good**
+**Good** ✅
 
 ```jsx
 import React from "react";
@@ -609,71 +622,83 @@ You can config it in `eslintrc.json`
     ]
 ```
 
-### ⑭. Reserved Prop Naming <a name='14-reserved-prop-naming-'></a>
+### ⑭. Reserved Prop Naming 
+
 - **Don’t use DOM component prop names** for passing props between components because others might not expect these names.
 
-**Bad**
+**Bad** ❌
+
 ```jsx
 <MyComponent style="dark" />
 
 <MyComponent className="dark" />
 ```
 
-**Good**
+**Good** ✅
+
 ```jsx
 <MyComponent variant="fancy" />
 ```
 
-### ⑮. Underscore in Method Name <a name='15-underscore-in-method-name-'></a>
+### ⑮. Underscore in Method Name
 **Don't use underscores** in any internal React **method**.
-**Bad**
+
+**Bad** ❌
+
 ```jsx
 const _onClickHandler = () => {
   // do stuff
 }
 ```
 
-**Good**
+**Good** ✅
+
 ```jsx
 const onClickHandler = () => {
   // do stuff
 }
 ```
 
-### ⑯. Alt Prop <a name='16-alt-prop-'></a>
+### ⑯. Alt Prop
+
 - **Always include** an **alt prop** in your `<img >` tags
 - Don’t use `picture` or `image` in your alt property. No need to include that.
 
-**Bad**
+**Bad** ❌
+
 ```jsx
 <img src="hello.jpg" />
 <img src="hello.jpg" alt="Picture of me rowing a boat" />
 ```
 
-**Good**
+**Good** ✅
+
 ```jsx
 <img src="hello.jpg" alt="Me waving hello" />
 ```
 
-### ⑰. Use Object Destructuring For Props <a name='17-use-object-destructuring-for-props-'></a>
+### ⑰. Use Object Destructuring For Props 
+
 - Instead of passing the props object, use **object destructuring** to pass the prop name. 
 - This discards the need to refer to the props object each time you need to use it.
 
-**Bad**
+**Bad** ❌
+
 ```jsx
 const Button = (props) => {
   return <button>{ props.text }</button>;
 };
 ```
 
-**Good**
+**Good** ✅
+
 ```jsx
 const Button = ({ text }) => {
   return <button>{ text }</button>;
 };
 ```
 
-### ⑱. Separating business logic from component logic <a name='18-separating-business-logic-from-component-logic-'></a>
+### ⑱. Separating business logic from component logic 
 
 **What is the Separation of Concerns?**
 - It states that logic that performs different actions should not be groupled or combined together.
@@ -684,7 +709,7 @@ To achieve a separation of concerns we have two types of components:
 - *Presentational components*
 
 **Container components**: 
-- **Provide, create, or hold data** for the children components.
+-  **Provide, create, or hold data** for the children components.
 - The only job of a container component is to handle data. It doesn't consist of any UI of its own.
 
 **Presentational components**:
@@ -703,6 +728,7 @@ To achieve a separation of concerns we have two types of components:
 **Example code demo:**
 
 **usePosts.tsx**
+
 ```jsx
 import { useEffect, useState } from "react";
 import { ISinglePost } from "../Definitions";
@@ -736,6 +762,7 @@ export default function usePosts() {
 ```
 
 **Posts.tsx**
+
 ```tsx
 /**
  * A presentational component
@@ -768,24 +795,27 @@ export default function Posts(props: { posts: ISinglePost[] }) {
 }
 ```
 
-### ⑲. Use a testing library <a name='19-use-a-testing-library-'></a>
+### ⑲. Use a testing library 
+
 - Testing is an essential part of the development process.
 - Help you **catch bugs early** and ensure that your code is **reliable and maintainable**.
 - Some popular options include [Jest](https://jestjs.io/), [Enzyme](https://enzymejs.github.io/enzyme/), and [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/).
 
-### ⑳. Lazy Loading to improve performance <a name='20-lazy-loading-to-improve-performance-'></a>
+### ⑳. Lazy Loading to improve performance
+
 - Is an **optimization technique** for websites or web applications
 - When a user visits a web page, instead of loading the entire page, only a **portion of it renders**. And then, it will **delay** the remaining webpage until the user scrolls to that portion of the web page.
 - Benefits of Lazy loading React component:
-  - Faster initial loading
-  - Better User Experience
-  - Less bandwidth consumption
-  - Preserving system resources
-  - Reduced work for the browser
+    - Faster initial loading
+    - Better User Experience
+    - Less bandwidth consumption
+    - Preserving system resources
+    - Reduced work for the browser
 
 - `React lazy()` integrated into the core react library itself → easy for us to lazy load react components.
 
 Example:
+
 ```jsx
 const Artists = React.lazy(() => import('./Artists'));
 
@@ -799,7 +829,8 @@ function MyComponent() {
 ```
 
 ### Conclusion
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I hope the above tips will be really helpful for you. Of course there might be best practices you consider more important that I've missed here. That's great. I'd love to hear what you'd like to add to this lesson. Thank you for taking time for my lesson.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I hope the above tips will be really helpful for you. Of course there might be best practices you consider more important that I've missed here. That's great. I'd love to hear what you'd like to add to this lesson. 🅃🄷🄰🄽🄺 🅈🄾🅄 for taking time for my lesson.
+
 ### REFERENCES
 1. https://www.loginradius.com/blog/engineering/guest-post/react-best-coding-practices/
 2. https://betterprogramming.pub/21-best-practices-for-a-clean-react-project-df788a682fb?gi=17305bcc69d3
@@ -808,4 +839,4 @@ function MyComponent() {
 5. https://medium.com/@dan_abramov?source=post_page-----7ca2f9a7c7d0-------------------------------- 
 6. https://www.freecodecamp.org/news/separation-of-concerns-react-container-and-presentational-components/
 
-[Back to top](#)
+[Scroll to top ↑](#)
