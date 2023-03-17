@@ -36,8 +36,8 @@
     ![localhost](/images/lesson/db_1.png)
 
 - Ở panel bên trái chọn `wp_options` → Click vào `Select data`
-    ![localhost](/images/lesson/db_2.png)
 
+    ![localhost](/images/lesson/db_2.png)
     ![localhost](/images/lesson/db_3.png)
 
 - Dữ liệu hiện ra, chúng ta cần update lại value cho 2 fields sau thành: `http://{ip}:{port} (http://10.10.10.78:10009)`
