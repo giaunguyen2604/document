@@ -43,9 +43,11 @@
 - Dữ liệu hiện ra, chúng ta cần update lại value cho 2 fields sau thành: `http://{ip}:{port} (http://10.10.10.78:10009)`
 
 Before:
+
     ![localhost](/images/lesson/db_4.png)
 
 After:
+
     ![localhost](/images/lesson/db_5.png)
 
 - Reload lại site trên device → work fine 😜
