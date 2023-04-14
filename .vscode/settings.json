@@ -1,0 +1,17 @@
+{
+	"editor.codeActionsOnSave": { "source.fixAll.eslint": true },
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[xml]": {
+		"editor.defaultFormatter": "redhat.vscode-xml"
+	},
+	"[markdown]": {
+		"editor.formatOnSave": true,
+		"editor.unicodeHighlight.ambiguousCharacters": false,
+		"editor.unicodeHighlight.invisibleCharacters": false,
+		"diffEditor.ignoreTrimWhitespace": false,
+		"editor.wordWrap": "on",
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+	},
+	"pasteImage.path": "${projectRoot}/images/animation"
+}
