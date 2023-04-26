@@ -13,5 +13,5 @@
 		"editor.wordWrap": "on",
 		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
 	},
-	"pasteImage.path": "${projectRoot}/images/animation"
+	"pasteImage.path": "${projectRoot}/images/vue"
 }

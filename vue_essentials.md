@@ -1,4 +1,4 @@
-# VUE 3
+# VUE 3 - ESSENTIALS
 
 ## Introduction
 #### What is Vue?
@@ -940,6 +940,532 @@ For more: https://vuejs.org/guide/essentials/event-handling.html#key-modifiers
 
 
 ### Form Input Bindings
+- `v-model` directive:
+```html
+<input v-model="text">
+```
+It's a shorten of:
+```html
+<input
+  :value="text"
+  @input="event => text = event.target.value">
+```
+- `<input>` with text types and `<textarea> ` elements use `value` property and input event;
+- `<input type="checkbox">` and `<input type="radio">` use `checked` property and change event;
+- `<select>` use value as a prop and `change` as an event.
+
+`v-model` will ignore the initial value, checked or selected attributes found on any form elements.
+
+**Some examples:**
+Input, TextArea
+```html
+<p>Message is: {{ message }}</p>
+<input v-model="message" placeholder="edit me" />
+```
+```html
+<span>Multiline message is:</span>
+<p style="white-space: pre-line;">{{ message }}</p>
+<textarea v-model="message" placeholder="add multiple lines"></textarea>
+```
+Checkbox
+```html
+<input type="checkbox" id="checkbox" v-model="checked" />
+<label for="checkbox">{{ checked }}</label>
+```
+
+```html
+const checkedNames = ref([])
+<div>Checked names: {{ checkedNames }}</div>
+
+<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+<label for="jack">Jack</label>
+
+<input type="checkbox" id="john" value="John" v-model="checkedNames">
+<label for="john">John</label>
+
+<input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+<label for="mike">Mike</label>
+```
+
+Radio
+```html
+<div>Picked: {{ picked }}</div>
+
+<input type="radio" id="one" value="One" v-model="picked" />
+<label for="one">One</label>
+
+<input type="radio" id="two" value="Two" v-model="picked" />
+<label for="two">Two</label>
+```
+Select
+```html
+<div>Selected: {{ selected }}</div>
+
+<select v-model="selected">
+  <option disabled value="">Please select one</option>
+  <option>A</option>
+  <option>B</option>
+  <option>C</option>
+</select>
+```
+
+Select options can be dynamically rendered with `v-for`:
+
+```html
+<select v-model="selected">
+  <option v-for="option in options" :value="option.value">
+    {{ option.text }}
+  </option>
+</select>
+
+<div>Selected: {{ selected }}</div>
+```
+#### Value Bindings
+- For radio, checkbox and select options, the `v-model` binding values are usually static strings (or booleans for checkbox).
+```html
+<!-- `picked` is a string "a" when checked -->
+<input type="radio" v-model="picked" value="a" />
+
+<!-- `toggle` is either true or false -->
+<input type="checkbox" v-model="toggle" />
+
+<!-- `selected` is a string "abc" when the first option is selected -->
+<select v-model="selected">
+  <option value="abc">ABC</option>
+</select>
+```
+**Checkbox**
+```html
+<input
+  type="checkbox"
+  v-model="toggle"
+  true-value="yes"
+  false-value="no" />
+```
+- `true-value` and `false-value` only work with `v-modal`, not affect the input's `value` atrribute.
+- You can also bind them to dynamic values using `v-bind`:
+```html
+<input
+  type="checkbox"
+  v-model="toggle"
+  :true-value="dynamicTrueValue"
+  :false-value="dynamicFalseValue" />
+```
+**Radio**
+```html
+<input type="radio" v-model="pick" :value="first" />
+<input type="radio" v-model="pick" :value="second" />
+```
+
+**Select Options**
+```html
+<select v-model="selected">
+  <!-- inline object literal -->
+  <option :value="{ number: 123 }">123</option>
+</select>
+```
+→ `v-model` supports value bindings of non-string values as well.
+
+#### Modifiers:
+- .lazy
+  ```html
+  <!-- synced after "change" instead of "input" -->
+  <input v-model.lazy="msg" />
+  ```
+- .number
+  ```html
+  <input v-model.number="age" />
+  ```
+  If the value cannot be parsed with `parseFloat()`, then the original value is used instead.
+- .trim
+  ```html
+  <input v-model.trim="msg" />
+  ```
+  → whitespace from user input to be trimmed automatically.
+
+### Lifecycle Hooks
+#### Registering Lifecycle Hooks
+- `onMounted` hook can be used to run code after the component has finished the initial rendering and created the DOM nodes.
+- It's registered **synchronously** during component setup.
+
+#### Lifecycle Diagram
+![](images/vue/2023-04-18-15-41-42.png)
+
+
+### Watchers
+- We can use the watch function to trigger a callback whenever a piece of reactive state changes.
+```html
+<script setup>
+import { ref, watch } from 'vue'
+
+const question = ref('')
+const answer = ref('Questions usually contain a question mark. ;-)')
+
+// watch works directly on a ref
+watch(question, async (newQuestion, oldQuestion) => {
+  if (newQuestion.indexOf('?') > -1) {
+    answer.value = 'Thinking...'
+    try {
+      const res = await fetch('https://yesno.wtf/api')
+      answer.value = (await res.json()).answer
+    } catch (error) {
+      answer.value = 'Error! Could not reach the API. ' + error
+    }
+  }
+})
+</script>
+
+<template>
+  <p>
+    Ask a yes/no question:
+    <input v-model="question" />
+  </p>
+  <p>{{ answer }}</p>
+</template>
+```
+
+#### Watch Source Types
+- First argument can be a ref, a reactive object, a getter function, or an array of multiple sources.
+```js
+const x = ref(0)
+const y = ref(0)
+
+// single ref
+watch(x, (newX) => {
+  console.log(`x is ${newX}`)
+})
+
+// getter
+watch(
+  () => x.value + y.value,
+  (sum) => {
+    console.log(`sum of x + y is: ${sum}`)
+  }
+)
+
+// array of multiple sources
+watch([x, () => y.value], ([newX, newY]) => {
+  console.log(`x is ${newX} and y is ${newY}`)
+})
+```
+- can't watch a property of a reactive object, instead, use a getter:
+```js
+// instead, use a getter:
+watch(
+  () => obj.count,
+  (count) => {
+    console.log(`count is: ${count}`)
+  }
+)
+```
+
+- Deep Watchers: https://vuejs.org/guide/essentials/watchers.html#deep-watchers 
+
+#### Eager Watchers
+- We can force a watcher's callback to be executed immediately by passing the `immediate: true ` option:
+```js
+watch(source, (newValue, oldValue) => {
+  // executed immediately, then again when `source` changes
+}, { immediate: true })
+```
+
+#### watchEffect()
+- `watchEffect()` allows us to track the callback's reactive dependencies automatically.
+Example:
+```js
+watchEffect(async () => {
+  const response = await fetch(
+    `https://jsonplaceholder.typicode.com/todos/${todoId.value}`
+  )
+  data.value = await response.json()
+})
+```
+
+- The callback will run immediately, there's no need to specify `immediate: true`.
+- Whenever todoId.value changes, the callback will be run again.
+- With watchEffect(), we no longer need to pass todoId explicitly as the source value.
+
+#### Callback Flush Timing
+- By default, user-created watcher callbacks are called before Vue component updates.
+- If you want to access the DOM in a watcher callback after Vue has updated it, you need to specify the flush: 'post' option:
+```js
+watch(source, callback, {
+  flush: 'post'
+})
+
+watchEffect(callback, {
+  flush: 'post'
+})
+```
+- Post-flush `watchEffect()` also has a convenience alias, `watchPostEffect()`:
+```js
+import { watchPostEffect } from 'vue'
+
+watchPostEffect(() => {
+  /* executed after Vue updates */
+})
+```
+
+#### Stopping a Watcher
+- Watcher automatically stopped when the owner component is unmounted.
+- If the watcher is created in an async callback, it won't be bound to the owner component and must be stopped manually to avoid memory leaks.
+
+```js
+<script setup>
+import { watchEffect } from 'vue'
+
+// this one will be automatically stopped
+watchEffect(() => {})
+
+// ...this one will not!
+setTimeout(() => {
+  watchEffect(() => {})
+}, 100)
+</script>
+```
+- Unwatch: This works for both `watch` and `watchEffect`:
+```js
+const unwatch = watchEffect(() => {})
+
+// ...later, when no longer needed
+unwatch()
+```
+
+### Template Refs
+- Direct access to the underlying DOM elements.
+- Use the special ref attribute
+```js
+<input ref="input">
+```
+
+#### Accessing the Refs
+- we need to declare a ref with the same name:
+```ts
+<script setup>
+import { ref, onMounted } from 'vue'
+
+// declare a ref to hold the element reference
+// the name must match template ref value
+const input = ref(null)
+
+onMounted(() => {
+  input.value.focus()
+})
+</script>
+
+<template>
+  <input ref="input" />
+</template>
+```
+- If not using `<script setup>`, make sure to also return the ref from `setup()`
+- you can only access the ref after the component is `mounted`, the value is `null` on the first render.
+#### Refs inside v-for
+```ts
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const list = ref([
+  /* ... */
+])
+
+const itemRefs = ref([])
+
+onMounted(() => console.log(itemRefs.value))
+</script>
+
+<template>
+  <ul>
+    <li v-for="item in list" ref="itemRefs">
+      {{ item }}
+    </li>
+  </ul>
+</template>
+```
+- the ref array does **not** guarantee the same order as the source array.
+#### Function Refs
+- Using a dynamic `:ref` binding so we can pass it a function instead of a ref name string.
+
+#### Ref on Component
+```ts
+<script setup>
+import { ref, onMounted } from 'vue'
+import Child from './Child.vue'
+
+const child = ref(null)
+
+onMounted(() => {
+  // child.value will hold an instance of <Child />
+})
+</script>
+
+<template>
+  <Child ref="child" />
+</template>
+```
+- Parent component will have full access to every property and method of the child component.
+- Component refs should be only used when absolutely needed, should implement parent / child interactions using the standard props and emit interfaces first.
+
+### Components Basics
+- split the UI into independent and reusable pieces.
+![](images/vue/2023-04-18-17-12-22.png)
+#### Defining a Component
+- With build step, define each Vue component in a dedicated file using the .vue extension - Single-File Component (SFC).
+```ts
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0)
+</script>
+
+<template>
+  <button @click="count++">You clicked me {{ count }} times.</button>
+</template>
+```
+
+- Not using build step, component can be defined as a plain JS object containing Vue-specific options.
+```ts
+import { ref } from 'vue'
+
+export default {
+  setup() {
+    const count = ref(0)
+    return { count }
+  },
+  template: `
+    <button @click="count++">
+      You clicked me {{ count }} times.
+    </button>`
+  // or `template: '#my-template-element'`
+}
+```
+#### Using a Component
+- To use a child component, import it in the parent component.
+```ts
+<script setup>
+import ButtonCounter from './ButtonCounter.vue'
+</script>
+
+<template>
+  <h1>Here is a child component!</h1>
+  <ButtonCounter />
+</template>
+```
+- It's also possible to globally register a component, making it available to all components without having to import it.
+-  Each time you use a component, a new **instance** of it is created.
+-  In SFCs, it's recommended to use **PascalCase** tag names.
+-  If you are authoring your templates directly in a DOM, you will need to use kebab-case and explicit closing tags for components.
+#### Passing Props
+- Props are custom attributes you can register on a component.
+- Must declare in the list of props this component accepts, using the `defineProps` macro.
+```ts
+// BlogPost.vue
+<script setup>
+defineProps(['title'])
+</script>
+
+<template>
+  <h4>{{ title }}</h4>
+</template>
+```
+
+- `defineProps` is a compile-time macro that is only available inside `<script setup>`.
+- no need to be explicitly imported.
+- `defineProps` also returns an object that contains all the props passed to the component.
+```js
+const props = defineProps(['title'])
+console.log(props.title)
+```
+- If you are not using `<script setup>`:
+```ts
+export default {
+  props: ['title'],
+  setup(props) {
+    console.log(props.title)
+  }
+}
+```
+
+- You want to render a component for each one, using v-for:
+```html
+<BlogPost
+  v-for="post in posts"
+  :key="post.id"
+  :title="post.title"
+ />
+```
+
+#### Listening to Events
+```html
+<BlogPost
+  ...
+  @enlarge-text="postFontSize += 0.1"
+ />
+```
+- The child component can emit an event on itself by calling the built-in `$emit` method, passing the name of the event:
+```html
+<!-- BlogPost.vue, omitting <script> -->
+<template>
+  <div class="blog-post">
+    <h4>{{ title }}</h4>
+    <button @click="$emit('enlarge-text')">Enlarge text</button>
+  </div>
+</template>
+```
+- We can optionally declare emitted events using the `defineEmits` macro:
+```ts
+//  BlogPost.vue
+<script setup>
+defineProps(['title'])
+defineEmits(['enlarge-text'])
+</script>
+```
+- If you are not using `<script setup>`:
+```ts
+export default {
+  emits: ['enlarge-text'],
+  setup(props, ctx) {
+    ctx.emit('enlarge-text')
+  }
+}
+```
+
+#### Content Distribution with Slots
+- Useful to be able to pass content to a component.
+Example:
+```html
+<AlertBox>
+  Something bad happened.
+</AlertBox>
+```
+This can be achieved using Vue's custom `<slot>` element:
+```html
+<template>
+  <div class="alert-box">
+    <strong>This is an Error for Demo Purposes</strong>
+    <slot />
+  </div>
+</template>
+
+<style scoped>
+.alert-box {
+  /* ... */
+}
+</style>
+```
+
+#### Dynamic Components
+```html
+<!-- Component changes when currentTab changes -->
+<component :is="tabs[currentTab]"></component>
+``` 
+The value passed to :is can contain either:
+- the name string of a registered component, OR
+- the actual imported component object
+
+When switching between multiple components with `<component :is="...">`, component will be unmounted.
+We can force the inactive components to stay "alive" with the built-in `<KeepAlive>` component.
+#### DOM Template Parsing Caveats
+More: https://vuejs.org/guide/essentials/component-basics.html#dom-template-parsing-caveats 
 
 
 
