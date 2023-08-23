@@ -1,10 +1,10 @@
 ### PARALLAX SCROLLING
 
-##### 1. **What is parallax scrolling?**
+#### 1. **What is parallax scrolling?**
 - It is a web site trend where the `background content` (i.e. an image) is moved at a `different speed` than the `foreground content` while scrolling.
 
 
-##### 2. How To Create a Simple Parallax Scrolling Effect
+#### 2. How To Create a Simple Parallax Scrolling Effect
 - Add a background image to the container with a specific height
 - Use the `background-attachment: fixed` to create the actual parallax effect.
 
@@ -131,7 +131,7 @@ Sử dụng `perspective: 1px;` cho thẻ `body` và tại `section1` và `secti
 }
 ```
 
-##### 3. Use Js library to create parallax Effect by Scrolling
+#### 3. Use Js library to create parallax Effect by Scrolling
 - Có nhiều thư viện hỗ trợ như: `Skrollr`, `scrollMagic`, `Parallax.js`, `scrollReveal.js`,... 
 - Trong ví dụ này, mình sẽ sử dụng thư viện `Skrollr` để tạo parallax effect mà nó đơn giản, tương thích với nhiều thiết bị.
 
@@ -190,12 +190,12 @@ Ta apply như sau:
 Ta được kết quả như sau:
 ![parallax-result](/images/parallax/3.gif)
 
-##### 3. Parallax Effect with ReactJs
-**3.1. React-scroll-parallax**
-Github: github.com/jscottsmith/react-scroll-parallax
-Storybook: https://react-scroll-parallax-v3.surge.sh/
-Website: https://react-scroll-parallax.damnthat.tv/docs/usage/
-Unpacked Size: 202kB
+#### 4. Parallax Effect with ReactJs
+**4.1. React-scroll-parallax**
+- Github: github.com/jscottsmith/react-scroll-parallax
+- Storybook: https://react-scroll-parallax-v3.surge.sh/
+- Website: https://react-scroll-parallax.damnthat.tv/docs/usage/
+- Unpacked Size: 202kB
 
 **Usage:**
 
@@ -258,9 +258,10 @@ const {ref: ref1} = useParallax<HTMLDivElement>({rotate: [0,360], translateX: [0
 ```
 
 ![Demo](/images/parallax/6.gif)
-**3.2 Framer motion**
-Github: github.com/framer/motion
-Website: https://www.framer.com/motion
-Unpacked Size: 2.07MB
+
+**4.2 Framer motion**
+- Github: github.com/framer/motion
+- Website: https://www.framer.com/motion
+- Unpacked Size: 2.07MB
 
 
