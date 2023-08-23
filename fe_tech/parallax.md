@@ -264,4 +264,7 @@ const {ref: ref1} = useParallax<HTMLDivElement>({rotate: [0,360], translateX: [0
 - Website: https://www.framer.com/motion
 - Unpacked Size: 2.07MB
 
+Demo example:
+https://codesandbox.io/s/framer-motion-parallax-5tgfu
+
 
