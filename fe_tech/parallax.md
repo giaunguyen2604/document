@@ -264,7 +264,63 @@ const {ref: ref1} = useParallax<HTMLDivElement>({rotate: [0,360], translateX: [0
 - Website: https://www.framer.com/motion
 - Unpacked Size: 2.07MB
 
-Demo example:
+**Demo**
+**Library:**
+- framer-motion
+- react-intersection-observer
+
+**Features:**
+- Two boxes are moving with different speed when scrolling.
+- Animate a box when scroll in view
+
+**Html**
+```jsx
+<div className='motion'>
+  <motion.div className='box' style={{ y: y1, x: -50 }} />
+  <motion.div
+    className='box'
+    style={{ y: y2, x: 50, background: 'salmon' }}
+  />
+  <div style={{ height: 500 }} />
+  <div style={{ position: 'fixed', top: 0, left: 0 }}>
+    {'is in view ' + inView}
+  </div>
+  <motion.div
+    animate={inView ? 'visible' : 'hidden'}
+    variants={variants}
+    transition={{ duration: 2, ease: 'easeOut' }}
+    ref={ref}
+    className='magic'
+  />
+</div>
+```
+- We have three boxes (wrap by `motion.div` tag):
+  - The first two boxes will move with different speed.
+  ```jsx
+  const { scrollY } = useScroll();
+  const y1 = useTransform(scrollY, [0, 300], [0, 200]);
+  const y2 = useTransform(scrollY, [0, 300], [0, -200]);
+  ```
+  - The last box will be animated which indicated by the value `variants`.
+
+  ```jsx
+  const [ref, inView] = useInView({
+	  /* Optional options */
+	  threshold: 0.5,
+	  triggerOnce: false,
+	});
+
+	const variants = {
+	  visible: { opacity: 1, scale: 1, y: 0 },
+	  hidden: {
+	    opacity: 0,
+	    scale: 0.65,
+	    y: 50,
+	  },
+	};
+  ```
+
+Other example:
 https://codesandbox.io/s/framer-motion-parallax-5tgfu
 
 
