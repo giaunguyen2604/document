@@ -93,7 +93,7 @@ Mong muốn rằng `section1` và `section3` sẽ di chuyển chậm hơn khi sc
 **Giải pháp:**
 Sử dụng `perspective: 1px;` cho thẻ `body` và tại `section1` và `section3` ta `transform: translateZ(-1px)`.
 
-- **Perspective**:
+- **Perspective**: (https://css-tricks.com/how-css-perspective-works/)
   - Determines the distance between the z=0 plane and the user in order.
   - Use to give a 3D-positioned element some perspective.
   - Each 3D element with z>0 becomes larger; each 3D-element with z<0 becomes smaller.
