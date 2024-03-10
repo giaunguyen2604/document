@@ -878,7 +878,7 @@ const { count } = getContext('my-context');
 $: console.log({ count: $count });
 ```
 
-**Special elements:**
+9. **Special elements:**
 
 **<svelte:self>**
 
@@ -922,3 +922,119 @@ The `this` value can be any component constructor, or a falsy value — if it's 
 ```
 
 We can also bind to certain properties of window, such as scrollY:
+```svelte
+<svelte:window bind:scrollY={y} />
+```
+
+The list of properties you can bind to is as follows:
+- innerWidth
+- innerHeight
+- outerWidth
+- outerHeight
+- scrollX
+- scrollY
+- online — an alias for window.navigator.onLine
+
+All except `scrollX` and `scrollY` are readonly.
+
+**<svelte:body>**
+
+`<svelte:body>` element allows you to listen for events that fire on `document.body`.
+
+→ useful with the `mouseenter` and `mouseleave` events.
+```svelte
+<svelte:body
+	on:mouseenter={() => hereKitty = true}
+	on:mouseleave={() => hereKitty = false}
+/>
+```
+
+**<svelte:document>**
+
+- useful with events like `selectionchange`:
+```svelte
+<svelte:document on:selectionchange={handleSelectionChange} />
+```
+*Note:* Avoid `mouseenter` and `mouseleave` handlers on this element. Use `<svelte:body>` instead.
+
+**<svelte:head>**
+-  Allows you to insert elements inside the `<head>` of your document. 
+- Useful for things like `<title>` and `<meta>` tags, good for SEO.
+
+Example dynamic css style:
+```svelte
+<script>
+	const themes = ['margaritaville', 'retrowave', 'spaaaaace', 'halloween'];
+	let selected = themes[0];
+</script>
+
+<svelte:head>
+	<link rel="stylesheet" href="/stylesheets/{selected}.css" />
+</svelte:head>
+
+<h1>Welcome to my site!</h1>
+
+<select bind:value={selected}>
+	<option disabled>choose a theme</option>
+
+	{#each themes as theme}
+		<option>{theme}</option>
+	{/each}
+</select>
+```
+
+**<svelte:options>**
+- Allows you to specify compiler options.
+- Prevent flash issue when component updated (receive new data).
+Add this to the top of `Component`:
+```svelte
+<svelte:options immutable={true} />
+```
+More: https://learn.svelte.dev/tutorial/svelte-options
+
+**<svelte:fragment>**
+- Allows you to place content in a named slot without wrapping it in a container DOM element.
+```svelte
+<svelte:fragment slot="game">
+	{#each squares as square, i}
+		<button
+			class="square"
+			class:winning={winningLine?.includes(i)}
+			disabled={square}
+			on:click={() => {
+				squares[i] = next;
+				next = next === 'x' ? 'o' : 'x';
+			}}
+		>
+			{square}
+		</button>
+	{/each}
+</svelte:fragment>
+```
+
+
+10. **Module Context **
+**Sharing code:**
+- to run some code outside of an individual component instance. 
+- to do this, declaring a `<script context="module">` block.
+```svelte
+<script context="module">
+	let current;
+</script>
+```
+**Export:**
+- Anything exported from a `context="module"` script block becomes an export from the module itself.
+- You can import and use when need.
+
+11. **Miscellaneous**
+The @debug tag
+- to pause execution, use the {@debug ...} tag with a comma-separated list of values you want to inspect.
+```svelte
+{@debug user}
+
+<h1>Hello {user.firstname}!</h1>
+```
+
+
+
+
