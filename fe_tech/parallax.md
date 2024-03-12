@@ -2,7 +2,8 @@
 
 #### 1. **What is parallax scrolling?**
 - It is a web site trend where the `background content` (i.e. an image) is moved at a `different speed` than the `foreground content` while scrolling.
-s
+
+(Cho thêm vài website ví dụ)
 
 #### 2. How To Create a Simple Parallax Scrolling Effect
 - Add a background image to the container with a specific height
@@ -320,6 +321,9 @@ const {ref: ref1} = useParallax<HTMLDivElement>({rotate: [0,360], translateX: [0
 	};
   ```
 
-Other example:
+**Example:**
 https://codesandbox.io/s/framer-motion-parallax-5tgfu
-
+https://www.jordan.com/collection/air-jordan-27
+https://nasaprospect.com/
+https://www.recapafteruse.co.uk/
+https://webflow.com/web-design-art-history
