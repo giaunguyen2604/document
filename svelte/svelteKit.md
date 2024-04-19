@@ -1,11 +1,11 @@
 ## PART 1: BASIC SVELTEKIT
 
-1. Introduction
+1. **Introduction**
 - Whereas `Svelte` is a component framework, `SvelteKit` is an app framework (or metaframework)
 - `SvelteKit` apps are server-rendered by default for excellent first load performance and SEO.
 -  Can transition to client-side navigation.
 
-2. Routing
+2. **Routing**
 
 **Pages:**
 - Use filesystem-based routing (are defined by the directories in your codebase).
@@ -79,9 +79,9 @@ Just as `+layout.svelte` files create UI for every child route, `+layout.server.
 https://learn.svelte.dev/tutorial/layout-data
 
 
-4. **Headers and cookies **
+4. **Headers and cookies**
 
-Setting headers
+_Setting headers_
 - Inside a `load` function (as well as in form actions, hooks and API routes), able to access to a `setHeaders` function.
 - Customise caching behaviour with the Cache-Control response header.
 ```svelte
@@ -92,7 +92,7 @@ export function load({ setHeaders }) {
 }
 ```
 
-Reading and writing cookies:
+_Reading and writing cookies:_
 - The `setHeaders` function can't be used with the `Set-Cookie` header. Instead, you should use the `cookies API`.
 ```svelte
 export function load({ cookies }) {
@@ -117,7 +117,7 @@ To set a cookie, use `cookies.set(name, value, options)`
 ```
 
 
-5. **Shared modules / The $lib alias **
+5. **Shared modules / The $lib alias**
 
 Anything inside `lib` directory can be accessed by any module in src via the `$lib` alias.
 
@@ -318,7 +318,7 @@ Similarly, we can add handlers for other HTTP verbs (PUT and DELETE handlers).
 {/if}
 ```
 
-9. Errors and redirects
+9. **Errors and redirects**
 
 **Basics:**
 - Expected error
