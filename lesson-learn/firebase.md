@@ -44,7 +44,7 @@ export { db, auth, storage, functions, analytics }
 ```
 
 ## 2. **Firebase Authentication**
-- Go to Firebase console → follow the instruction in console to enable the feature
+- Go to Firebase console → follow the instruction on console to enable the feature
 - Authorized domains: At Settings tab → select menu `Authorized domains` → Add Domain being used
 - In firebase config file, add this:
  ```ts
@@ -57,6 +57,7 @@ Why using **next-firebase-auth-edge**:
 - It allows for server-side rendering, ensuring that authentication checks are performed before rendering pages, which enhances security and user experience.
 
 Official doc: https://next-firebase-auth-edge-docs.vercel.app/docs/getting-started
+
 Tutorial: https://hackernoon.com/using-firebase-authentication-with-the-latest-nextjs-features
 
 ## 3. **Firebase Storage**
