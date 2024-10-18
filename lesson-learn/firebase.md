@@ -175,5 +175,5 @@ export const logSearchEvent = (params: { searchValue: string }) => {
 }
 ```
 
-**View logged events**: on Firebase console, extend tab `Analytics` and select `Events`.
+**View logged events**: on Firebase console, expand tab `Analytics` and select `Events`.
 
