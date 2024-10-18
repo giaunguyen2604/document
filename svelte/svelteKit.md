@@ -366,26 +366,55 @@ export function load() {
 
 ## PART 2: ADVANCE SVELTEKIT
 1. **Hooks**
-**handle:**
-- 
+**handle:** → `src/hooks.server.js`
+- is ways to intercept and override the framework's default behaviour.
+- default:
+
+```svelte
+export async function handle({ event, resolve }) {
+	return await resolve(event);
+}
+```
+
 **The RequestEvent object:**
-- 
+- The event object passed into `handle` is the same object — an instance of a `RequestEvent` that is passed into API routes, form actions, load functions.
+- It contains some usefull properties and methods like: cookies, fetch, locals, params, request,...
+
 **handleFetch:**
-- 
+- be used to make credentialed requests on the server.
+- make relative requests on the server
+- internal requests (without the overhead of an HTTP call)
+
 **handleError:**
-- 
+- intercept unexpected errors and trigger some behaviour, like pinging a Slack channel or sending data to an error logging service.
 
 2. **Page options**
 **Basics:**
-- 
+- We can also export various page options from these modules:
+  - ssr — whether or not pages should be server-rendered
+  - csr — whether to load the SvelteKit client
+  - prerender — whether to prerender pages at build time, instead of per-request
+  - trailingSlash — whether to strip, add, or ignore trailing slashes in URLs
 **ssr:**
-- 
+- Setting `ssr` to `false` inside your root +layout.server.js effectively turns your entire app into a single-page app (SPA).
 **csr:**
-- 
+- you can disable client-side rendering altogether: `export const csr = false`
+
 **prerender:**
-- 
+-  means generating HTML for a page once, at build time, rather than dynamically for each request.
+-  serving static data is extremely cheap and performant
+-  `export const prerender = true;`
+-  Not all pages can be prerendered. Because it must be static data for everyone.
+-  Setting prerender to true inside your root +layout.server.js effectively turns SvelteKit into a static site generator (SSG).
+
 **trailingSlash**
-- 
+- default, SvelteKit strips trailing slashes (default = 'nerver'). (`/foo/` same as `/foo`)
+- If we want to config to `always` or `ignore`:
+  ```
+  export const trailingSlash = 'always';
+  export const trailingSlash = 'ignore';
+  ```
+
 3. **Link options**
 **Preloading:**
 - 
@@ -403,7 +432,7 @@ export function load() {
 - 
 **Breaking out of layouts:**
 - 
-5. **Advance loading**
+1. **Advance loading**
 **Universal load functions:**
 - 
 **Using both load functions:**
@@ -416,7 +445,7 @@ export function load() {
 - 
 **invalidateAll:**
 - 
-6. **Environment variables**
+1. **Environment variables**
 **$env/static/private:**
 - 
 **$env/dynamic/private:**
